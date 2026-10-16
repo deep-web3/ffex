@@ -22,8 +22,10 @@ git commit -m "ffex blog: initial site"
    git push -u origin main
    ```
 2. In the repo: **Settings → Pages → Build and deployment → Source**,
-   select **GitHub Actions**. The `deploy.yml` workflow picks it up from
-   there — every push to `main` builds and publishes.
+   select **GitHub Actions** before the first push. GitHub does not allow the
+   default `GITHUB_TOKEN` to create a Pages site, so this one-time setting is
+   required. The `deploy.yml` workflow then builds and publishes on every
+   push to `main`.
 3. The site URL will be `https://deep-web3.github.io/ffex/`. The workflow
    derives the correct `baseURL` automatically (this also covers a custom
    domain if you add one later).
