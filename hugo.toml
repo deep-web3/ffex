@@ -1,0 +1,155 @@
+# ffex — promotional blog for the ffex exchange platform solution.
+# Stack: Hugo + PaperMod (vendored under themes/PaperMod) + GitHub Pages.
+# Setup, publishing and giscus steps are documented in README.md.
+
+baseURL = "https://deep-web3.github.io/ffex/"
+locale = "en-us"
+defaultContentLanguage = "en"
+title = "ffex — Exchange Platform Engineering"
+theme = "PaperMod"
+
+enableRobotsTXT = true
+enableEmoji = true
+enableGitInfo = false
+summaryLength = 70
+
+[pagination]
+  pagerSize = 10
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+
+[markup]
+  [markup.highlight]
+    noClasses = false
+    lineNos = false
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = false
+
+[params]
+  env = "production"
+  defaultTheme = "auto"
+  description = "ffex is a complete digital-asset exchange platform solution — spot, derivatives, OTC and custody — delivered as dual Java and Go implementations with production-grade observability and fund-safety discipline."
+  author = "ffex Engineering"
+  keywords = [
+    "digital asset exchange",
+    "cryptocurrency exchange platform",
+    "matching engine",
+    "spot trading",
+    "perpetual futures",
+    "options trading",
+    "OTC trading",
+    "wallet custody",
+    "exchange infrastructure",
+    "white label exchange solution",
+  ]
+
+  ShowReadingTime = true
+  ShowShareButtons = false
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+  ShowWordCount = false
+  ShowToc = true
+  TocOpen = false
+
+  # Contact channels shown in the footer, About and contact pages.
+  contactTelegram = "https://t.me/bitdevops"
+  contactEmail = "horizonvideo@gmail.com"
+
+  # giscus comments (based on GitHub Discussions).
+  # Leave disabled until the repo exists — fill the three IDs per README.md,
+  # then flip `comments` to true.
+  comments = false
+  giscusRepo = "" # e.g. "your-org/ffex"
+  giscusRepoId = ""
+  giscusCategory = "Announcements"
+  giscusCategoryId = ""
+
+  [[params.socialIcons]]
+    name = "telegram"
+    url = "https://t.me/bitdevops"
+
+  [[params.socialIcons]]
+    name = "email"
+    url = "mailto:horizonvideo@gmail.com"
+
+# ---------------------------------------------------------------------------
+# Languages — English first (site root), Chinese under /zh/.
+# ---------------------------------------------------------------------------
+
+[languages]
+  [languages.en]
+    locale = "en-us"
+    label = "English"
+    contentDir = "content/en"
+    weight = 1
+    title = "ffex — Exchange Platform Engineering"
+
+    [languages.en.params]
+      [languages.en.params.homeInfoParams]
+        Title = "ffex"
+        Content = "A complete digital-asset exchange platform — engineered for throughput, fund safety and full-stack observability. On this blog we publish what the architecture is built to achieve; the internals live behind an NDA. [Talk to us →](posts/working-with-ffex/)"
+
+    [languages.en.menu]
+      [[languages.en.menu.main]]
+        identifier = "home"
+        name = "Home"
+        url = "/"
+        weight = 1
+      [[languages.en.menu.main]]
+        identifier = "posts"
+        name = "Posts"
+        url = "/posts/"
+        weight = 2
+      [[languages.en.menu.main]]
+        identifier = "about"
+        name = "About"
+        url = "/about/"
+        weight = 3
+      [[languages.en.menu.main]]
+        identifier = "lang-switch"
+        name = "中文"
+        url = "/zh/"
+        weight = 9
+
+  [languages.zh]
+    locale = "zh-cn"
+    label = "中文"
+    contentDir = "content/zh"
+    weight = 2
+    title = "ffex — 交易所平台工程"
+
+    [languages.zh.params]
+      description = "ffex 是一套完整的数字资产交易所平台方案——现货、衍生品、OTC 与钱包托管，以 Java/Go 双实现交付，具备生产级可观测性与资金安全纪律。"
+
+      [languages.zh.params.homeInfoParams]
+        Title = "ffex"
+        Content = "一套完整的数字资产交易所平台——为吞吐、资金安全与全链路可观测而设计。本站发布架构所要达成的能力与结果；核心实现细节只在 NDA 之后。[联系我们 →](posts/working-with-ffex/)"
+
+    [languages.zh.menu]
+      [[languages.zh.menu.main]]
+        identifier = "home"
+        name = "首页"
+        url = "/zh/"
+        weight = 1
+      [[languages.zh.menu.main]]
+        identifier = "posts"
+        name = "文章"
+        url = "/zh/posts/"
+        weight = 2
+      [[languages.zh.menu.main]]
+        identifier = "about"
+        name = "关于"
+        url = "/zh/about/"
+        weight = 3
+      [[languages.zh.menu.main]]
+        identifier = "lang-switch"
+        name = "English"
+        url = "/"
+        weight = 9

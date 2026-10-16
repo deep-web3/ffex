@@ -1,0 +1,66 @@
+# Build and deploy the ffex blog to GitHub Pages on every push to main.
+# Hugo and all actions are pinned to exact versions — see README.md for the
+# dependency manifest and how to upgrade them.
+
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# One deployment at a time; do not cancel an in-flight production deploy.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      HUGO_VERSION: "0.168.0"
+      HUGO_CHECKSUM: "787f100057328824f38c6ad7c87ff10d6451ae0a7bc39cedaad0dd2bcde17e53"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7.0.1
+
+      - name: Install Hugo (exact version, checksum-verified)
+        run: |
+          set -euo pipefail
+          curl -fsSL --retry 3 -o hugo.tar.gz \
+            "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz"
+          echo "${HUGO_CHECKSUM}  hugo.tar.gz" | sha256sum --check
+          sudo install -m 0755 hugo /usr/local/bin/hugo
+          hugo version
+
+      - name: Configure Pages
+        id: pages
+        uses: actions/configure-pages@v6.0.0
+
+      - name: Build site
+        env:
+          HUGO_ENV: production
+        # configure-pages resolves the final URL (org or user account,
+        # custom domains included), so no hardcoded baseURL is needed here.
+        run: hugo --gc --minify --baseURL "${{ steps.pages.outputs.base_url }}/"
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v5.0.0
+        with:
+          path: ./public
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5.0.1
