@@ -1,0 +1,50 @@
+{{- $zh := eq .Lang "zh" -}}
+{{- $posts := "posts/" | relLangURL -}}
+{{- $platform := "platform/" | relLangURL -}}
+{{- $about := "about/" | relLangURL -}}
+<section class="ffex-home" aria-labelledby="ffex-home-title">
+  <div class="ffex-hero-grid" aria-hidden="true"></div>
+  <div class="ffex-hero">
+    <div class="ffex-hero-copy">
+      <p class="ffex-eyebrow"><span class="ffex-live-dot"></span>{{ if $zh }}契约优先 · 双语言交付 · 全链路可观测{{ else }}CONTRACT FIRST · DUAL LANGUAGE · OBSERVABLE BY DESIGN{{ end }}</p>
+      <h1 id="ffex-home-title">{{ if $zh }}把交易所做成一套可进化的<strong>系统</strong>{{ else }}An exchange built as a<br><strong>system that evolves.</strong>{{ end }}</h1>
+      <p class="ffex-hero-lede">{{ if $zh }}ffex 将 Java、Go、撮合、资金安全、运维与 AI+Web3 放进同一张工程蓝图，让每一次交易都可验证、每一次扩展都可持续。{{ else }}ffex brings Java, Go, matching, fund safety, operations and AI+Web3 into one engineering blueprint—so every trade is verifiable and every extension is sustainable.{{ end }}</p>
+      <div class="ffex-hero-actions">
+        <a class="ffex-button ffex-button-primary" href="{{ $platform }}">{{ if $zh }}查看平台图谱{{ else }}View the platform map{{ end }} <span aria-hidden="true">↗</span></a>
+        <a class="ffex-button ffex-button-quiet" href="{{ $about }}">{{ if $zh }}了解 ffex{{ else }}Meet ffex{{ end }}</a>
+      </div>
+      <div class="ffex-metrics" aria-label="{{ if $zh }}平台摘要{{ else }}Platform snapshot{{ end }}">
+        <div><strong>02</strong><span>{{ if $zh }}生产级实现{{ else }}production paths{{ end }}</span></div>
+        <div><strong>24/7</strong><span>{{ if $zh }}可观测运行{{ else }}observable operations{{ end }}</span></div>
+        <div><strong>∞</strong><span>{{ if $zh }}可演进边界{{ else }}evolving boundaries{{ end }}</span></div>
+      </div>
+    </div>
+    <div class="ffex-orbit-art" role="img" aria-label="{{ if $zh }}ffex 可观测交易系统图示{{ else }}Diagram of the observable ffex exchange system{{ end }}">
+      <svg viewBox="0 0 620 620" xmlns="http://www.w3.org/2000/svg" focusable="false">
+        <defs>
+          <linearGradient id="ffexOrb" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#7c5cff"/><stop offset=".52" stop-color="#28d7c1"/><stop offset="1" stop-color="#ffb86b"/></linearGradient>
+          <filter id="ffexGlow"><feGaussianBlur stdDeviation="10" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+        <circle cx="310" cy="310" r="240" fill="none" stroke="url(#ffexOrb)" stroke-opacity=".16" stroke-width="1" stroke-dasharray="5 12"/>
+        <circle cx="310" cy="310" r="186" fill="none" stroke="#6e72ff" stroke-opacity=".3" stroke-width="1"/>
+        <path d="M75 385C140 205 207 465 310 285S475 174 548 322" fill="none" stroke="url(#ffexOrb)" stroke-width="2" stroke-dasharray="2 10"/>
+        <path d="M130 170L490 445M125 440L480 160M310 66V554" stroke="#fff" stroke-opacity=".09"/>
+        <g filter="url(#ffexGlow)"><circle cx="310" cy="310" r="82" fill="#17172c" stroke="url(#ffexOrb)" stroke-width="3"/><circle cx="310" cy="310" r="55" fill="#24224b" stroke="#fff" stroke-opacity=".2"/></g>
+        <path d="M280 308h60M310 278v60" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".8"/>
+        <g fill="#c9fff4" stroke="#28d7c1" stroke-width="2"><circle cx="124" cy="174" r="8"/><circle cx="493" cy="174" r="8"/><circle cx="493" cy="445" r="8"/><circle cx="128" cy="440" r="8"/></g>
+        <g fill="#fff" font-family="ui-monospace,monospace" font-size="13" letter-spacing="2"><text x="86" y="148">API</text><text x="462" y="148">gRPC</text><text x="456" y="478">TRACE</text><text x="86" y="474">LEDGER</text><text x="264" y="415" fill="#b7b1ff">MATCH</text></g>
+      </svg>
+      <span class="ffex-orbit-label ffex-label-top">TRACE / 01</span><span class="ffex-orbit-label ffex-label-bottom">SETTLE / 99.99%</span>
+    </div>
+  </div>
+
+  <div class="ffex-section-intro"><p class="ffex-kicker">{{ if $zh }}核心能力{{ else }}THE CORE SYSTEM{{ end }}</p><h2>{{ if $zh }}从语言到链路，<em>每一层都能对话</em>{{ else }}Every layer speaks to<br><em>the next one.</em>{{ end }}</h2><p>{{ if $zh }}不是堆砌功能，而是把边界、协议和证据连成一条可运行的路径。{{ else }}Not a pile of features. A running path that connects boundaries, protocols and evidence.{{ end }}</p></div>
+  <div class="ffex-capability-grid">
+    <article class="ffex-capability-card ffex-card-purple"><span class="ffex-card-index">01 / RUNTIME</span><div class="ffex-card-icon" aria-hidden="true">⌘</div><h3>{{ if $zh }}Java / Go 双引擎{{ else }}Java / Go dual runtime{{ end }}</h3><p>{{ if $zh }}同一份契约优先蓝图，分别在 Java 与 Go 中落地，适配不同团队与运行时边界。{{ else }}One contract-first blueprint, delivered in Java and Go for different teams and runtime boundaries.{{ end }}</p><a href="{{ $platform }}" aria-label="{{ if $zh }}查看 Java 与 Go 平台图谱{{ else }}View the Java and Go platform map{{ end }}">{{ if $zh }}查看平台图谱{{ else }}View the map{{ end }} <span aria-hidden="true">↗</span></a></article>
+    <article class="ffex-capability-card ffex-card-teal"><span class="ffex-card-index">02 / MATCHING</span><div class="ffex-card-icon" aria-hidden="true">↯</div><h3>{{ if $zh }}撮合与资金安全{{ else }}Matching & fund safety{{ end }}</h3><p>{{ if $zh }}从订单状态、余额守恒到幂等与恢复，交易核心在每个边界留下可审计证据。{{ else }}From order states and balance conservation to idempotency and recovery, every boundary leaves auditable evidence.{{ end }}</p><a href="{{ $platform }}" aria-label="{{ if $zh }}查看撮合链路图{{ else }}View the matching flow{{ end }}">{{ if $zh }}查看交易主链{{ else }}View the trading path{{ end }} <span aria-hidden="true">↗</span></a></article>
+    <article class="ffex-capability-card ffex-card-orange"><span class="ffex-card-index">03 / OBSERVABILITY</span><div class="ffex-card-icon" aria-hidden="true">◌</div><h3>{{ if $zh }}gRPC 全链路监控{{ else }}gRPC observability{{ end }}</h3><p>{{ if $zh }}HTTP、WebSocket、gRPC、Kafka、数据库与异步任务共享一条可追踪的证据链。{{ else }}HTTP, WebSocket, gRPC, Kafka, databases and async workers share one traceable evidence chain.{{ end }}</p><a href="{{ $platform }}" aria-label="{{ if $zh }}查看全链路图{{ else }}View trace coverage{{ end }}">{{ if $zh }}查看 trace 图{{ else }}View trace map{{ end }} <span aria-hidden="true">↗</span></a></article>
+    <article class="ffex-capability-card ffex-card-blue"><span class="ffex-card-index">04 / OPERATIONS</span><div class="ffex-card-icon" aria-hidden="true">⌁</div><h3>{{ if $zh }}运维与公共能力{{ else }}Operations & common services{{ end }}</h3><p>{{ if $zh }}通知、认证、配置、运行时与发布流程拥有清晰 owner，让系统在变化中保持稳定。{{ else }}Notifications, identity, runtime and release flows have clear owners, keeping the system stable as it changes.{{ end }}</p><a href="{{ $about }}">{{ if $zh }}查看平台边界{{ else }}See the boundaries{{ end }} <span aria-hidden="true">↗</span></a></article>
+  </div>
+
+  <section class="ffex-roadmap" aria-labelledby="ffex-roadmap-title"><div><p class="ffex-kicker">{{ if $zh }}下一站{{ else }}THE NEXT HORIZON{{ end }}</p><h2 id="ffex-roadmap-title">{{ if $zh }}AI × Web3，<br><em>把复杂性变成判断力</em>{{ else }}AI × Web3,<br><em>complexity into conviction.</em>{{ end }}</h2><p>{{ if $zh }}AI 辅助风控、智能运营与链上资产协同，将成为下一代交易基础设施的自然延伸。{{ else }}AI-assisted risk, intelligent operations and on-chain asset coordination are the natural next layer of exchange infrastructure.{{ end }}</p><a class="ffex-text-link" href="{{ $platform }}">{{ if $zh }}查看路线图{{ else }}View the roadmap{{ end }} <span aria-hidden="true">→</span></a></div><div class="ffex-roadmap-diagram" aria-hidden="true"><svg viewBox="0 0 460 270" xmlns="http://www.w3.org/2000/svg"><path d="M25 210C95 210 88 65 170 65s76 140 155 140 65-120 110-120" fill="none" stroke="url(#ffexOrb)" stroke-width="3"/><circle cx="25" cy="210" r="7" fill="#ffb86b"/><circle cx="170" cy="65" r="7" fill="#28d7c1"/><circle cx="325" cy="205" r="7" fill="#7c5cff"/><circle cx="435" cy="85" r="10" fill="#fff"/><g fill="#aaa6d6" font-family="ui-monospace,monospace" font-size="11"><text x="10" y="240">SIGNAL</text><text x="145" y="35">MODEL</text><text x="292" y="238">ACTION</text><text x="398" y="55">TRUST</text></g></svg></div></section>
+</section>

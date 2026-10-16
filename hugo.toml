@@ -36,6 +36,9 @@ summaryLength = 70
   defaultTheme = "auto"
   description = "ffex is a complete digital-asset exchange platform solution — spot, derivatives, OTC and custody — delivered as dual Java and Go implementations with production-grade observability and fund-safety discipline."
   author = "ffex Engineering"
+  [params.label]
+    icon = "ffex-logo.svg"
+    iconHeight = 32
   keywords = [
     "digital asset exchange",
     "cryptocurrency exchange platform",
@@ -103,14 +106,14 @@ summaryLength = 70
         url = "/"
         weight = 1
       [[languages.en.menu.main]]
-        identifier = "posts"
-        name = "Posts"
-        url = "/posts/"
+        identifier = "platform"
+        name = "Platform"
+        url = "/platform/"
         weight = 2
       [[languages.en.menu.main]]
-        identifier = "about"
-        name = "About"
-        url = "/about/"
+        identifier = "posts"
+        name = "Journal"
+        url = "/posts/"
         weight = 3
       [[languages.en.menu.main]]
         identifier = "lang-switch"
@@ -139,14 +142,14 @@ summaryLength = 70
         url = "/zh/"
         weight = 1
       [[languages.zh.menu.main]]
+        identifier = "platform"
+        name = "平台"
+        url = "/zh/platform/"
+        weight = 2
+      [[languages.zh.menu.main]]
         identifier = "posts"
         name = "文章"
         url = "/zh/posts/"
-        weight = 2
-      [[languages.zh.menu.main]]
-        identifier = "about"
-        name = "关于"
-        url = "/zh/about/"
         weight = 3
       [[languages.zh.menu.main]]
         identifier = "lang-switch"
