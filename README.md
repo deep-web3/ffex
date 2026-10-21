@@ -8,6 +8,12 @@ licensing, direct delivery, joint build, custom modules and long-term support.
 English is served at `/`, Chinese at `/zh/`. Built with a custom Hugo theme and
 deployed to **GitHub Pages** by GitHub Actions on every push to `main`.
 
+## Preview
+
+![Desktop — animated demo showcase](docs/preview/showcase.png)
+
+![Mobile — demo showcase](docs/preview/mobile.png)
+
 The site is a marketing artefact: it publishes capability, design intent and
 engagement models. It deliberately contains no platform source code, no measured
 benchmarks, no server topology and no client identities. Those stay under NDA.
