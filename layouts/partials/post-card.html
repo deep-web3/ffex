@@ -1,0 +1,12 @@
+{{- $p := . -}}
+<article class="post-card" data-reveal>
+  <a class="post-card__link" href="{{ $p.RelPermalink }}">
+    <p class="post-card__meta">
+      <time datetime="{{ $p.Date.Format "2006-01-02" }}">{{ $p.Date.Format "2006-01-02" }}</time>
+      <span>{{ $p.ReadingTime }} {{ i18n "post_minutes" }}</span>
+    </p>
+    <h2 class="post-card__title">{{ $p.Title }}</h2>
+    <p class="post-card__desc">{{ $p.Description | default ($p.Summary | plainify | truncate 150) }}</p>
+    <span class="link-arrow">{{ i18n "read_insight" }}<span aria-hidden="true">↗</span></span>
+  </a>
+</article>

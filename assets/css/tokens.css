@@ -1,0 +1,116 @@
+/* Design tokens + reset. Dark-first Web3 infrastructure aesthetic. */
+:root {
+  --bg: #04050b;
+  --bg-2: #060812;
+  --panel: rgba(12, 16, 28, 0.72);
+  --panel-solid: #0a0d17;
+  --panel-raise: rgba(255, 255, 255, 0.035);
+  --ink: #eef1ff;
+  --ink-2: #ccd2ea;
+  --muted: #9aa2c4;
+  --faint: #7b83a6;
+  --line: rgba(158, 168, 212, 0.14);
+  --line-2: rgba(158, 168, 212, 0.26);
+  --line-soft: rgba(158, 168, 212, 0.07);
+  --violet: #8b6cff;
+  --cyan: #2ee6c5;
+  --lime: #c8ff62;
+  --amber: #ffb45c;
+  --rose: #ff6f91;
+  --grad: linear-gradient(100deg, #8b6cff 0%, #2ee6c5 52%, #c8ff62 100%);
+  --grad-soft: linear-gradient(120deg, rgba(139, 108, 255, 0.2), rgba(46, 230, 197, 0.1) 55%, rgba(200, 255, 98, 0.05));
+  --radius-sm: 12px;
+  --radius: 18px;
+  --radius-lg: 26px;
+  --radius-xl: 34px;
+  --container: 1240px;
+  --gutter: clamp(20px, 4.4vw, 44px);
+  --section: clamp(72px, 9vw, 132px);
+  --font-display: "Space Grotesk", "PingFang SC", "Noto Sans SC", "Microsoft YaHei", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Inter", "PingFang SC", "Noto Sans SC", "Microsoft YaHei", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  color-scheme: dark;
+  scroll-behavior: smooth;
+  scroll-padding-top: 96px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+body.nav-open {
+  overflow: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-weight: 500;
+}
+
+p {
+  margin: 0;
+}
+
+img, svg, video, canvas {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+ul, ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+::selection {
+  background: rgba(139, 108, 255, 0.4);
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  flex: none;
+}

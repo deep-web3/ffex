@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="{{ .Site.Language.Locale | default .Lang }}" data-lang="{{ .Lang }}">
+<head>
+  {{- partial "head.html" . -}}
+</head>
+<body class="kind-{{ .Kind }}{{ if .IsHome }} is-home{{ end }}{{ if .IsPage }} is-page{{ end }}" data-label-play="{{ i18n "video_play" }}" data-label-pause="{{ i18n "video_pause" }}">
+  <a class="skip-link" href="#main">{{ i18n "skip_to_content" }}</a>
+  <noscript><style>
+    @media (max-width: 1024px) {
+      .nav__inner { height: auto; flex-wrap: wrap; padding-block: 10px; row-gap: 4px; }
+      .nav__links { display: flex; flex-wrap: wrap; order: 3; width: 100%; margin-inline: 0; }
+      .nav__link { padding: 4px 8px; font-size: 0.8rem; }
+      .nav__panel { display: none; }
+      .nav__burger { display: none; }
+      .hero { padding-top: 130px; }
+    }
+  </style></noscript>
+  {{- partial "bg.html" . -}}
+  {{- partial "nav.html" . -}}
+  <main id="main" class="main">
+    {{- block "main" . }}{{ end -}}
+  </main>
+  {{- partial "footer.html" . -}}
+  {{- partial "scripts.html" . -}}
+</body>
+</html>

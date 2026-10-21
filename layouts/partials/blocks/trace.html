@@ -1,0 +1,59 @@
+{{- $b := .b -}}
+<section class="block block--trace"{{ with $b.id }} id="{{ . }}"{{ end }}>
+  <div class="container">
+    {{ partial "block-head.html" (dict "b" $b) }}
+    <div class="trace">
+      <div class="trace__media" data-reveal>
+        {{- with $b.media }}
+        <figure class="demo demo--solo">
+          <div class="demo__frame">
+            <video class="demo__video" data-demo-video muted loop playsinline preload="none" poster="{{ .poster | relURL }}" aria-label="{{ $b.title }}">
+              {{- with .video }}<source src="{{ . | relURL }}" type="video/webm">{{ end }}
+              {{- with .mp4 }}<source src="{{ . | relURL }}" type="video/mp4">{{ end }}
+            </video>
+            <button class="demo__toggle" type="button" data-video-toggle aria-label="{{ i18n "video_pause" }}">
+              <span class="demo__toggle-icon demo__toggle-icon--pause">{{ partial "icon.html" "pause" }}</span>
+              <span class="demo__toggle-icon demo__toggle-icon--play">{{ partial "icon.html" "play" }}</span>
+            </button>
+          </div>
+        </figure>
+        {{- else }}
+        <div class="trace__diagram">{{ partial "viz/waterfall.html" .p }}</div>
+        {{- end }}
+      </div>
+
+      {{- with $b.coverage }}
+      <div class="trace__coverage">
+        {{- range $b.coverage }}
+        <article class="trace__node" data-reveal>
+          <span class="trace__icon">{{ partial "icon.html" (.icon | default "pulse") }}</span>
+          <div>
+            <h3 class="trace__node-title">{{ .name }}</h3>
+            <p class="trace__node-desc">{{ .desc }}</p>
+          </div>
+        </article>
+        {{- end }}
+      </div>
+      {{- end }}
+    </div>
+
+    {{- with $b.principles }}
+    <div class="trace__principles">
+      {{- range $i, $it := . }}
+      <article class="trace__principle" data-reveal style="--i:{{ $i }}">
+        <span class="trace__principle-num">{{ printf "%02d" (add $i 1) }}</span>
+        <h3>{{ $it.title }}</h3>
+        <p>{{ $it.desc }}</p>
+      </article>
+      {{- end }}
+    </div>
+    {{- end }}
+
+    {{- with $b.note }}<p class="block-note">{{ . }}</p>{{ end }}
+    {{- with $b.link }}
+    <div class="block__cta-row" data-reveal>
+      <a class="btn btn--ghost btn--sm" href="{{ partial "href.html" .href }}">{{ .label }}{{ partial "icon.html" "arrow" }}</a>
+    </div>
+    {{- end }}
+  </div>
+</section>

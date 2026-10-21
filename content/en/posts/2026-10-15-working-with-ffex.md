@@ -1,7 +1,7 @@
 ---
 title: "Working with ffex: What We Deliver and How to Reach Us"
 date: 2026-10-15
-description: "Engagement model and contact channels for the ffex exchange platform solution — full platform delivery, domain modules, customization, and scoped pilots under NDA."
+description: "How to work with ffex: source-code licensing, direct delivery, domain modules, joint builds and scoped pilots — plus contact channels and what to include."
 tags: ["Partnership"]
 weight: 6
 ---
@@ -23,6 +23,9 @@ how it works.
 - **Deployment and operations support** — Kubernetes-based deployment
   blueprints, runbooks, and the release pipeline discipline described in
   [the previous article](../2026-10-14-observability-and-operations/).
+
+The full capability list is on the [capabilities page](../../capabilities/),
+and the runtime choice is covered on the [dual stack page](../../stack/).
 
 ## How an engagement runs
 

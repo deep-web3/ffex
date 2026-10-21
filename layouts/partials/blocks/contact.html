@@ -1,0 +1,29 @@
+{{- $b := .b -}}
+<section class="block block--contact"{{ with $b.id }} id="{{ . }}"{{ end }}>
+  <div class="container">
+    <div class="contact">
+      <div class="contact__channels">
+        {{- range $i, $c := $b.channels }}
+        <a class="contact__card" href="{{ partial "href.html" $c.href }}"{{ if hasPrefix $c.href "http" }} target="_blank" rel="noopener"{{ end }} data-reveal style="--i:{{ $i }}">
+          <span class="contact__icon">{{ partial "icon.html" ($c.icon | default "mail") }}</span>
+          <div class="contact__card-body">
+            <p class="eyebrow">{{ $c.label }}</p>
+            <p class="contact__value">{{ $c.value }}</p>
+          </div>
+          {{ partial "icon.html" "arrow" }}
+        </a>
+        {{- end }}
+      </div>
+      <div class="contact__checklist" data-reveal>
+        {{- with $b.title }}<h2 class="contact__title">{{ . }}</h2>{{ end }}
+        {{- with $b.lede }}<p class="contact__lede">{{ . }}</p>{{ end }}
+        {{- with $b.checklist }}
+        <ul class="contact__list">
+          {{- range . }}<li>{{ partial "icon.html" "check" }}<span>{{ . }}</span></li>{{ end }}
+        </ul>
+        {{- end }}
+        {{- with $b.note }}<p class="block-note">{{ . }}</p>{{ end }}
+      </div>
+    </div>
+  </div>
+</section>

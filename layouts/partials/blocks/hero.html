@@ -1,0 +1,40 @@
+{{- $b := .b -}}
+{{- $p := .p -}}
+{{- $variant := $b.variant | default "compact" -}}
+{{- $media := $b.media | default "none" -}}
+<section class="hero hero--{{ $variant }} hero--media-{{ $media }}"{{ with $b.id }} id="{{ . }}"{{ end }}>
+  <div class="container hero__inner">
+    <div class="hero__copy">
+      {{- with $b.kicker }}
+      <p class="eyebrow hero__kicker"><span class="hero__dot"></span>{{ . }}</p>
+      {{- end }}
+      <h1 class="hero__title">{{ $b.title | safeHTML }}</h1>
+      {{- with $b.lede }}<p class="hero__lede">{{ . | safeHTML }}</p>{{ end }}
+      {{- with $b.actions }}
+      <div class="hero__actions">
+        {{- range . }}
+        {{- $style := .style | default "primary" }}
+        <a class="btn btn--{{ $style }}" href="{{ partial "href.html" .href }}">{{ .label }}{{ if eq $style "primary" }}{{ partial "icon.html" "arrow" }}{{ end }}</a>
+        {{- end }}
+      </div>
+      {{- end }}
+      {{- if and (eq $variant "home") $b.stats }}
+      <dl class="hero__stats">
+        {{- range $b.stats }}
+        <div class="hero__stat"><dt>{{ .value }}</dt><dd>{{ .label }}</dd></div>
+        {{- end }}
+      </dl>
+      {{- end }}
+      {{- with $b.footnote }}<p class="hero__footnote">{{ . }}</p>{{ end }}
+    </div>
+    {{- if ne $media "none" }}
+    <div class="hero__visual">
+      {{- if eq $media "console" }}{{ partial "viz/console.html" $p }}
+      {{- else if eq $media "orbit" }}{{ partial "viz/orbit.html" $p }}
+      {{- else if eq $media "trace" }}{{ partial "viz/waterfall.html" $p }}
+      {{- else if eq $media "stack" }}{{ partial "viz/stack.html" $p }}
+      {{- end }}
+    </div>
+    {{- end }}
+  </div>
+</section>

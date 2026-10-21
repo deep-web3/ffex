@@ -1,0 +1,36 @@
+{{- define "main" -}}
+{{- if eq .Kind "term" -}}
+<section class="page-hero">
+  <div class="container">
+    <p class="eyebrow">{{ i18n "taxonomy_title" }} / TAG</p>
+    <h1 class="page-hero__title">#{{ .Title }}</h1>
+  </div>
+</section>
+<section class="block block--posts">
+  <div class="container">
+    <div class="insights__grid">
+      {{- range .Pages.ByDate.Reverse }}{{ partial "post-card.html" . }}{{ end }}
+    </div>
+    <div class="block__cta-row">
+      <a class="link-arrow" href="{{ "posts/" | relLangURL }}">← {{ i18n "taxonomy_all" }}</a>
+    </div>
+  </div>
+</section>
+{{- else -}}
+<section class="page-hero">
+  <div class="container">
+    <p class="eyebrow">{{ i18n "taxonomy_title" }}</p>
+    <h1 class="page-hero__title">{{ .Title }}</h1>
+  </div>
+</section>
+<section class="block block--posts">
+  <div class="container">
+    <div class="tags-cloud">
+      {{- range .Pages }}
+      <a class="tag" href="{{ .RelPermalink }}">{{ .Title }}</a>
+      {{- end }}
+    </div>
+  </div>
+</section>
+{{- end -}}
+{{- end -}}

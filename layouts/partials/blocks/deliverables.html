@@ -1,0 +1,16 @@
+{{- $b := .b -}}
+<section class="block block--deliverables"{{ with $b.id }} id="{{ . }}"{{ end }}>
+  <div class="container">
+    {{ partial "block-head.html" (dict "b" $b) }}
+    <div class="deliverables">
+      {{- range $i, $g := $b.groups }}
+      <div class="deliverables__group" data-reveal style="--i:{{ $i }}">
+        <h3 class="deliverables__title">{{ $g.title }}</h3>
+        <ul class="deliverables__list">
+          {{- range $g.items }}<li>{{ partial "icon.html" "check" }}<span>{{ . }}</span></li>{{ end }}
+        </ul>
+      </div>
+      {{- end }}
+    </div>
+  </div>
+</section>

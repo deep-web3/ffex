@@ -1,0 +1,108 @@
+{{- $p := . -}}
+{{- $site := .Site -}}
+{{- $isEn := eq .Lang "en" -}}
+{{- $title := $site.Title -}}
+{{- if not .IsHome -}}
+  {{- $title = printf "%s — ffex" .Title -}}
+{{- end -}}
+{{- $desc := .Description | default $site.Params.description -}}
+{{- $ogAsset := printf "og/ffex-og-%s.png" (cond $isEn "en" "zh") -}}
+{{- $ogURL := $ogAsset | absURL -}}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{{ $title }}</title>
+<meta name="description" content="{{ $desc }}">
+<link rel="canonical" href="{{ .Permalink }}">
+{{- range .AllTranslations }}
+<link rel="alternate" hreflang="{{ .Language.Locale | default .Lang }}" href="{{ .Permalink }}">
+{{- end }}
+{{- range .AllTranslations }}{{ if eq .Lang "en" }}
+<link rel="alternate" hreflang="x-default" href="{{ .Permalink }}">
+{{- end }}{{ end }}
+
+{{- if or (eq .Kind "taxonomy") (eq .Kind "term") }}
+<meta name="robots" content="noindex, follow">
+{{- end }}
+<meta name="theme-color" content="#04050b">
+<meta name="color-scheme" content="dark">
+<script>document.documentElement.classList.add("js");</script>
+<meta property="og:site_name" content="ffex">
+<meta property="og:title" content="{{ $title }}">
+<meta property="og:description" content="{{ $desc }}">
+<meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:image" content="{{ $ogURL }}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="ffex — the exchange platform you can own. Java × Go, full-link observability.">
+<meta property="og:locale" content="{{ if $isEn }}en_US{{ else }}zh_CN{{ end }}">
+{{- range .AllTranslations }}{{ if ne .Lang $p.Lang }}
+<meta property="og:locale:alternate" content="{{ if eq .Lang "en" }}en_US{{ else }}zh_CN{{ end }}">
+{{- end }}{{ end }}
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ $title }}">
+<meta name="twitter:description" content="{{ $desc }}">
+<meta name="twitter:image" content="{{ $ogURL }}">
+<meta name="twitter:image:alt" content="ffex — the exchange platform you can own. Java × Go, full-link observability.">
+
+<link rel="icon" type="image/svg+xml" href="{{ "favicon.svg" | relURL }}">
+<link rel="preload" href="{{ "fonts/space-grotesk.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{{ "fonts/inter.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{{ "fonts/jetbrains-mono.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
+
+{{- $cssFiles := slice
+  (resources.Get "css/fonts.css")
+  (resources.Get "css/tokens.css")
+  (resources.Get "css/base.css")
+  (resources.Get "css/blocks.css")
+  (resources.Get "css/pages.css")
+-}}
+{{- $css := $cssFiles | resources.Concat "css/site.css" | minify | fingerprint -}}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+
+{{- $graph := slice -}}
+{{- if .IsHome -}}
+  {{- $org := dict
+    "@type" "Organization"
+    "@id" (printf "%s#org" ("" | absURL))
+    "name" "ffex"
+    "url" ("" | absURL)
+    "logo" ("brand/ffex-mark.svg" | absURL)
+    "description" $desc
+    "sameAs" (slice $site.Params.siteRepo)
+  -}}
+  {{- $website := dict
+    "@type" "WebSite"
+    "@id" (printf "%s#website" ("" | absURL))
+    "name" "ffex"
+    "url" ("" | absURL)
+    "inLanguage" .Lang
+    "publisher" (dict "@id" (printf "%s#org" ("" | absURL)))
+  -}}
+  {{- $graph = $graph | append $org $website -}}
+{{- else if .IsPage -}}
+  {{- $article := dict
+    "@type" (cond (eq .Section "posts") "Article" "WebPage")
+    "headline" .Title
+    "description" $desc
+    "url" .Permalink
+    "inLanguage" .Lang
+    "isPartOf" (dict "@type" "WebSite" "name" "ffex" "url" ("" | absURL))
+  -}}
+  {{- if eq .Section "posts" -}}
+    {{- $article = merge $article (dict "datePublished" (.Date.Format "2006-01-02T15:04:05Z07:00") "dateModified" (.Lastmod.Format "2006-01-02T15:04:05Z07:00")) -}}
+  {{- end -}}
+  {{- $graph = $graph | append $article -}}
+{{- end -}}
+{{- $faqs := slice -}}
+{{- range .Params.blocks -}}
+  {{- if eq .type "faq" -}}
+    {{- range .items -}}
+      {{- $faqs = $faqs | append (dict "@type" "Question" "name" .q "acceptedAnswer" (dict "@type" "Answer" "text" (.a | plainify))) -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- with $faqs }}{{ $graph = $graph | append (dict "@type" "FAQPage" "mainEntity" .) }}{{ end -}}
+{{- with $graph }}
+<script type="application/ld+json">{{ dict "@context" "https://schema.org" "@graph" . | jsonify | safeJS }}</script>
+{{- end }}

@@ -1,20 +1,20 @@
 ---
 title: "Throughput by Design: Engineering the Trading Hot Path"
 date: 2026-10-12
-description: "How ffex engineers its trading hot path for six-figure TPS-class workloads — in-memory matching, single-writer order books, staged routing, cache layers and an event backbone."
+description: "How ffex engineers the trading hot path: in-memory books with a single writer, staged routing, cache layers and an event backbone with resolved failure semantics."
 tags: ["Architecture", "Performance"]
 weight: 3
 ---
 
 Throughput is not a number you tune in at the end. It is a property of
 where the design refuses to spend time. This article walks the ffex trading
-hot path and explains the decisions that add up to a platform designed for
-**six-figure TPS-class aggregate matching capacity per cluster** and
-**single-digit-millisecond order-placement budgets** at the edge.
+hot path and the decisions that keep it short: matching in memory, one
+writer per book, staged routing, and an async backbone for everything the
+trader should not wait on.
 
-To be explicit about scope: those are *design targets* built into the
-architecture, and we validate them per deployment against the customer's
-real workload — this blog does not publish benchmark reports.
+To be explicit about scope: we publish design intent, not benchmark
+reports. Capacity and latency are validated per deployment, against the
+customer's real workload and agreed infrastructure.
 
 ## The matching core: memory first, one writer per book
 
@@ -41,8 +41,8 @@ semantics instead of scattering half-processed across the platform.
 
 Market data and position queries dominate real traffic volumes. ffex puts
 dedicated cache layers in front of both — snapshots of book state, cached
-position and margin views — so that a burst of ten thousand depth
-subscriptions is served from memory, not by re-deriving state per request.
+position and margin views — so that a burst of depth subscriptions is
+served from memory, not by re-deriving state per request.
 
 ## The event backbone: the trade path never waits
 
@@ -72,4 +72,4 @@ core, memory layout, tuning parameters, measured capacity under specific
 hardware profiles — is exactly the part we share with partners under NDA
 and validate in a scoped pilot. If you are comparing platforms for a real
 deployment, that is the conversation worth having:
-[talk to us](../2026-10-15-working-with-ffex/).
+[talk to us](../../contact/).

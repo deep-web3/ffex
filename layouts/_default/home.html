@@ -1,0 +1,6 @@
+{{- define "main" -}}
+{{- $page := . -}}
+{{- range .Params.blocks -}}
+  {{- partial (printf "blocks/%s.html" .type) (dict "b" . "p" $page) -}}
+{{- end -}}
+{{- end -}}

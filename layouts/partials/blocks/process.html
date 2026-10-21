@@ -1,0 +1,18 @@
+{{- $b := .b -}}
+<section class="block block--process"{{ with $b.id }} id="{{ . }}"{{ end }}>
+  <div class="container">
+    {{ partial "block-head.html" (dict "b" $b) }}
+    <ol class="process">
+      {{- range $i, $s := $b.steps }}
+      <li class="process__step" data-reveal style="--i:{{ $i }}">
+        <span class="process__num">{{ printf "%02d" (add $i 1) }}</span>
+        <div class="process__body">
+          {{- with $s.meta }}<p class="eyebrow">{{ . }}</p>{{ end }}
+          <h3 class="process__title">{{ $s.title }}</h3>
+          <p class="process__desc">{{ $s.desc }}</p>
+        </div>
+      </li>
+      {{- end }}
+    </ol>
+  </div>
+</section>

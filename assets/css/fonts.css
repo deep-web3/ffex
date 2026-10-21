@@ -1,0 +1,22 @@
+/* Self-hosted variable fonts (SIL OFL 1.1, see ./OFL-*.txt). */
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("../fonts/space-grotesk.woff2") format("woff2");
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/inter.woff2") format("woff2");
+  font-weight: 400 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("../fonts/jetbrains-mono.woff2") format("woff2");
+  font-weight: 400 600;
+  font-style: normal;
+  font-display: swap;
+}

@@ -1,7 +1,7 @@
 ---
 title: "Inside ffex: How the Platform Is Split into Business Domains"
 date: 2026-10-11
-description: "A guided tour of ffex's business domains — identity, trading, clearing and risk, custody, products, and platform services — and the boundary rules that keep them honest."
+description: "A guided tour of the ffex business domains — identity, trading, clearing and risk, custody, products, market data — and the boundary rules that keep them honest."
 tags: ["Architecture", "Business Domains"]
 weight: 2
 ---

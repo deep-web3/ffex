@@ -1,0 +1,28 @@
+{{- define "main" -}}
+{{- $p := . -}}
+{{- $label := "INSIGHTS" -}}
+{{- if not (eq .Section "posts") }}{{ $label = "ARCHIVE" }}{{ end -}}
+<section class="page-hero">
+  <div class="container">
+    <p class="eyebrow">{{ $label }}</p>
+    <h1 class="page-hero__title">{{ .Title }}</h1>
+    {{- with .Description }}<p class="page-hero__lede">{{ . }}</p>{{ end }}
+    {{- with .Content }}<div class="page-hero__body">{{ . }}</div>{{ end }}
+  </div>
+</section>
+<section class="block block--posts">
+  <div class="container">
+    <div class="insights__grid">
+      {{- range .Pages.ByDate.Reverse }}{{ partial "post-card.html" . }}{{ end }}
+    </div>
+    {{- $pag := .Paginator }}
+    {{- if gt $pag.TotalPages 1 }}
+    <nav class="pagination" aria-label="Pagination">
+      {{- with $pag.Prev }}<a class="btn btn--ghost btn--sm" href="{{ .URL }}">← {{ i18n "pagination_prev" }}</a>{{ end }}
+      <span class="pagination__info">{{ $pag.PageNumber }} / {{ $pag.TotalPages }}</span>
+      {{- with $pag.Next }}<a class="btn btn--ghost btn--sm" href="{{ .URL }}">{{ i18n "pagination_next" }} →</a>{{ end }}
+    </nav>
+    {{- end }}
+  </div>
+</section>
+{{- end -}}

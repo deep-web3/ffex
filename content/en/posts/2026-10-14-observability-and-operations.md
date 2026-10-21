@@ -1,7 +1,7 @@
 ---
 title: "Operations You Can See: Observability, Security and Release Discipline"
 date: 2026-10-14
-description: "How ffex makes a distributed exchange debuggable: end-to-end tracing across every hop, structured logs with trace context, hardened admin access and pipeline-gated releases."
+description: "How ffex makes a distributed exchange debuggable: end-to-end traces across every hop, structured logs, hardened admin access and pipeline-gated releases."
 tags: ["Operations", "Observability", "Security"]
 weight: 5
 ---
@@ -37,10 +37,9 @@ request.
 
 ## The runtime posture
 
-The platform targets Kubernetes with an eBPF-based dataplane, and the
-security model assumes **zero implicit trust between services**: isolation
-is enforced at the network layer, with service boundaries as policy
-boundaries.
+The platform runs on Kubernetes, and service trust is not implicit:
+isolation is enforced at the network layer, and service boundaries are
+policy boundaries.
 
 Administrative access is deliberately strict:
 
@@ -75,4 +74,5 @@ guesswork into investigations with evidence:
 | What did this release change in the database? | The service's ordered migration history |
 
 The final piece is how all of this becomes yours:
-[working with ffex](../2026-10-15-working-with-ffex/).
+[working with ffex](../../cooperation/). The trace model itself is covered
+in detail on the [observability page](../../observability/).

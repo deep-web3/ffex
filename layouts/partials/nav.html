@@ -1,0 +1,53 @@
+{{- $p := . -}}
+{{- $otherURL := "" -}}
+{{- range $p.AllTranslations }}{{ if ne .Lang $p.Lang }}{{ $otherURL = .RelPermalink }}{{ end }}{{ end -}}
+{{- if not $otherURL -}}
+  {{- range hugo.Sites }}{{ if ne .Language.Lang $p.Lang }}{{ $otherURL = .Home.RelPermalink }}{{ end }}{{ end -}}
+{{- end -}}
+{{- $links := slice
+  (dict "label" (i18n "nav_capabilities") "href" ("capabilities/" | relLangURL))
+  (dict "label" (i18n "nav_stack") "href" ("stack/" | relLangURL))
+  (dict "label" (i18n "nav_observability") "href" ("observability/" | relLangURL))
+  (dict "label" (i18n "nav_cooperation") "href" ("cooperation/" | relLangURL))
+  (dict "label" (i18n "nav_insights") "href" ("posts/" | relLangURL))
+-}}
+<header class="nav" data-nav>
+  <div class="container nav__inner">
+    <a class="brand" href="{{ $p.Site.Home.RelPermalink }}" aria-label="ffex">
+      <img class="brand__mark" src="{{ "brand/ffex-mark.svg" | relURL }}" width="32" height="32" alt="">
+      <span class="brand__word">ffex</span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      {{- range $links }}
+      {{- $active := and (not $p.IsHome) (hasPrefix $p.RelPermalink .href) }}
+      <a class="nav__link{{ if $active }} is-active{{ end }}" href="{{ .href }}"{{ if $active }} aria-current="page"{{ end }}>{{ .label }}</a>
+      {{- end }}
+    </nav>
+
+    <div class="nav__actions">
+      <a class="nav__icon" href="{{ $p.Site.Params.siteRepo }}" target="_blank" rel="noopener" aria-label="{{ i18n "nav_github" }}">
+        {{ partial "icon.html" "github" }}
+      </a>
+      <a class="nav__lang" href="{{ $otherURL | default ($p.Site.Home.RelPermalink) }}" hreflang="{{ if eq $p.Lang "en" }}zh-CN{{ else }}en-US{{ end }}">{{ i18n "lang_switch" }}</a>
+      <a class="btn btn--primary btn--sm nav__cta" href="{{ "contact/" | relLangURL }}">{{ i18n "nav_talk" }}</a>
+      <button class="nav__burger" type="button" data-nav-toggle aria-expanded="false" aria-controls="nav-panel" aria-label="{{ i18n "nav_menu_open" }}">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="nav__panel" id="nav-panel" data-nav-panel data-close-label="{{ i18n "nav_menu_close" }}">
+    <nav class="nav__panel-links" aria-label="Mobile">
+      {{- range $links }}
+      <a class="nav__panel-link" href="{{ .href }}">{{ .label }}<span aria-hidden="true">↗</span></a>
+      {{- end }}
+      <a class="nav__panel-link" href="{{ "about/" | relLangURL }}">{{ i18n "nav_about" }}<span aria-hidden="true">↗</span></a>
+      <a class="nav__panel-link" href="{{ "contact/" | relLangURL }}">{{ i18n "nav_contact" }}<span aria-hidden="true">↗</span></a>
+    </nav>
+    <div class="nav__panel-foot">
+      <a class="btn btn--primary" href="{{ "contact/" | relLangURL }}">{{ i18n "nav_talk" }}</a>
+      <a class="nav__panel-lang" href="{{ $otherURL | default ($p.Site.Home.RelPermalink) }}">{{ i18n "lang_switch" }}</a>
+    </div>
+  </div>
+</header>

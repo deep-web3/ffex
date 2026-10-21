@@ -1,0 +1,17 @@
+{{- define "main" -}}
+<section class="notfound">
+  <div class="container notfound__inner">
+    <p class="eyebrow">404 / NOT FOUND</p>
+    <h1 class="notfound__title">{{ i18n "notfound_title" }}</h1>
+    <p class="notfound__desc">{{ i18n "notfound_desc" }}</p>
+    <div class="notfound__actions">
+      <a class="btn btn--primary" href="{{ site.Home.RelPermalink }}">{{ i18n "notfound_home" }}{{ partial "icon.html" "arrow" }}</a>
+      <a class="btn btn--ghost" href="{{ "capabilities/" | relLangURL }}">{{ i18n "nav_capabilities" }}</a>
+      <a class="btn btn--ghost" href="{{ "contact/" | relLangURL }}">{{ i18n "notfound_contact" }}</a>
+    </div>
+    <p class="notfound__lang">
+      <a href="{{ "" | relLangURL }}">{{ if eq .Lang "en" }}中文首页{{ else }}English home{{ end }}</a>
+    </p>
+  </div>
+</section>
+{{- end -}}

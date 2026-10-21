@@ -1,0 +1,60 @@
+{{- $b := .b -}}
+<section class="block block--stack"{{ with $b.id }} id="{{ . }}"{{ end }}>
+  <div class="container">
+    {{ partial "block-head.html" (dict "b" $b) }}
+    <div class="stack">
+      <div class="stack__cards">
+        {{- range $i, $it := $b.items }}
+        <article class="stack__card accent-{{ $it.accent | default "violet" }}" data-reveal style="--i:{{ $i }}">
+          <div class="stack__top">
+            <span class="stack__name">{{ $it.name }}</span>
+            {{- with $it.badge }}<span class="stack__badge">{{ . }}</span>{{ end }}
+          </div>
+          {{- with $it.tag }}<p class="stack__tag">{{ . }}</p>{{ end }}
+          <p class="stack__desc">{{ $it.desc }}</p>
+          {{- with $it.bullets }}
+          <ul class="stack__list">
+            {{- range . }}<li>{{ partial "icon.html" "check" }}<span>{{ . }}</span></li>{{ end }}
+          </ul>
+          {{- end }}
+        </article>
+        {{- end }}
+      </div>
+
+      {{- with $b.shared }}
+      <div class="stack__shared" data-reveal>
+        <div class="stack__shared-copy">
+          <p class="eyebrow">{{ .title }}</p>
+          <p class="stack__shared-desc">{{ .desc }}</p>
+        </div>
+        <ul class="stack__shared-points">
+          {{- range .points }}<li>{{ . }}</li>{{ end }}
+        </ul>
+        <span class="stack__shared-mark" aria-hidden="true">PROTO</span>
+      </div>
+      {{- end }}
+
+      {{- with $b.matrix }}
+      <div class="matrix" data-reveal>
+        <table class="matrix__table">
+          <thead>
+            <tr>{{ range .columns }}<th scope="col">{{ . }}</th>{{ end }}</tr>
+          </thead>
+          <tbody>
+            {{- range .rows }}
+            <tr><th scope="row">{{ .label }}</th>{{ range .values }}<td>{{ . }}</td>{{ end }}</tr>
+            {{- end }}
+          </tbody>
+        </table>
+      </div>
+      {{- end }}
+
+      {{- with $b.cta }}
+      <div class="block__cta-row" data-reveal>
+        <p>{{ .label }}</p>
+        <a class="btn btn--ghost btn--sm" href="{{ partial "href.html" .href }}">{{ .linkLabel }}{{ partial "icon.html" "arrow" }}</a>
+      </div>
+      {{- end }}
+    </div>
+  </div>
+</section>

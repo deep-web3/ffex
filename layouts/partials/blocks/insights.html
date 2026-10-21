@@ -1,0 +1,15 @@
+{{- $b := .b -}}
+{{- $limit := 3 -}}
+{{- with $b.limit }}{{ $limit = . }}{{ end -}}
+{{- $posts := first (int $limit) (where site.RegularPages "Section" "posts").ByDate.Reverse -}}
+<section class="block block--insights"{{ with $b.id }} id="{{ . }}"{{ end }}>
+  <div class="container">
+    <div class="insights__head">
+      {{ partial "block-head.html" (dict "b" $b) }}
+      <a class="link-arrow insights__all" href="{{ "posts/" | relLangURL }}">{{ i18n "insights_all" }}<span aria-hidden="true">↗</span></a>
+    </div>
+    <div class="insights__grid">
+      {{- range $posts }}{{ partial "post-card.html" . }}{{ end }}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,8 @@
+{{- $b := .b -}}
+<header class="section-head" data-reveal>
+  {{- with $b.kicker }}<p class="eyebrow">{{ . }}</p>{{ end }}
+  <div class="section-head__main">
+    {{- with $b.title }}<h2 class="section-title">{{ . | safeHTML }}</h2>{{ end }}
+  </div>
+  {{- with $b.lede }}<p class="section-lede">{{ . | safeHTML }}</p>{{ end }}
+</header>

@@ -1,0 +1,56 @@
+{{- $p := . -}}
+{{- $site := .Site -}}
+<footer class="footer">
+  <div class="container footer__grid">
+    <div class="footer__brand">
+      <a class="brand" href="{{ $site.Home.RelPermalink }}" aria-label="ffex">
+        <img class="brand__mark" src="{{ "brand/ffex-mark.svg" | relURL }}" width="32" height="32" alt="">
+        <span class="brand__word">ffex</span>
+      </a>
+      <p class="footer__tagline">{{ i18n "footer_tagline" }}</p>
+      <ul class="footer__contact">
+        <li>
+          <a href="{{ $site.Params.contactTelegram }}" target="_blank" rel="noopener">
+            {{ partial "icon.html" "telegram" }}
+            <span>{{ $site.Params.contactTelegramLabel }}</span>
+          </a>
+        </li>
+        <li>
+          <a href="mailto:{{ $site.Params.contactEmail }}">
+            {{ partial "icon.html" "mail" }}
+            <span>{{ $site.Params.contactEmail }}</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <nav class="footer__col" aria-label="{{ i18n "footer_platform" }}">
+      <h2 class="footer__title">{{ i18n "footer_platform" }}</h2>
+      <a href="{{ "capabilities/" | relLangURL }}">{{ i18n "nav_capabilities" }}</a>
+      <a href="{{ "stack/" | relLangURL }}">{{ i18n "nav_stack" }}</a>
+      <a href="{{ "observability/" | relLangURL }}">{{ i18n "nav_observability" }}</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="{{ i18n "footer_cooperate" }}">
+      <h2 class="footer__title">{{ i18n "footer_cooperate" }}</h2>
+      <a href="{{ "cooperation/" | relLangURL }}">{{ i18n "nav_cooperation" }}</a>
+      <a href="{{ "contact/" | relLangURL }}">{{ i18n "nav_contact" }}</a>
+      <a href="{{ "about/" | relLangURL }}">{{ i18n "nav_about" }}</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="{{ i18n "footer_resources" }}">
+      <h2 class="footer__title">{{ i18n "footer_resources" }}</h2>
+      <a href="{{ "posts/" | relLangURL }}">{{ i18n "nav_insights" }}</a>
+      <a href="{{ $site.Params.siteRepo }}" target="_blank" rel="noopener">{{ i18n "footer_github" }}</a>
+    </nav>
+  </div>
+
+  <div class="container footer__legal">
+    <p class="footer__note">{{ i18n "footer_demo_note" }}</p>
+    <p class="footer__note">{{ i18n "footer_compliance" }}</p>
+    <div class="footer__bottom">
+      <p>© {{ now.Year }} ffex · {{ i18n "footer_rights" }}</p>
+      <p class="footer__built">{{ i18n "footer_built" }}</p>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,70 @@
+<div class="console" data-hero-viz aria-hidden="true">
+  <div class="console__glow"></div>
+  <div class="console__window">
+    <div class="console__bar">
+      <span class="console__dot"></span><span class="console__dot"></span><span class="console__dot"></span>
+      <span class="console__title">ffex / market fabric</span>
+      <span class="console__live"><i></i>DEMO</span>
+    </div>
+    <div class="console__body">
+      <div class="console__main">
+        <div class="console__chart-head">
+          <div class="console__pair">
+            <span class="console__sym">BTC / USDT</span>
+            <span class="console__price" data-price>68,420.50</span>
+            <span class="console__delta" data-delta>+2.41%</span>
+          </div>
+          <div class="console__ranges"><span class="is-active">1H</span><span>4H</span><span>1D</span></div>
+        </div>
+        <div class="console__chart">
+          <canvas data-chart></canvas>
+          <span class="console__watermark">DEMO DATA</span>
+        </div>
+        <div class="console__tape" data-tape></div>
+      </div>
+      <aside class="console__side">
+        <div class="console__panel-head"><span>ORDER BOOK</span><span data-book-mid>68,420.50</span></div>
+        <div class="console__book" data-book>
+          <div class="console__book-row"><span>68,424.10</span><span>0.842</span><i style="--w:42%"></i></div>
+          <div class="console__book-row"><span>68,423.20</span><span>1.204</span><i style="--w:60%"></i></div>
+          <div class="console__book-row"><span>68,422.70</span><span>0.516</span><i style="--w:26%"></i></div>
+          <div class="console__book-row"><span>68,422.10</span><span>1.732</span><i style="--w:74%"></i></div>
+          <div class="console__book-row console__book-row--mid"><span>68,420.50</span><span>SPREAD</span><i></i></div>
+          <div class="console__book-row console__book-row--bid"><span>68,419.80</span><span>0.964</span><i style="--w:38%"></i></div>
+          <div class="console__book-row console__book-row--bid"><span>68,419.10</span><span>1.560</span><i style="--w:66%"></i></div>
+          <div class="console__book-row console__book-row--bid"><span>68,418.40</span><span>0.722</span><i style="--w:30%"></i></div>
+          <div class="console__book-row console__book-row--bid"><span>68,417.60</span><span>2.048</span><i style="--w:86%"></i></div>
+        </div>
+        <div class="console__panel-head console__panel-head--push"><span>EVENTS</span><span>STREAM</span></div>
+        <div class="console__events" data-events>
+          <div class="console__event"><i class="dot dot--cyan"></i><span>ORDER ACCEPTED</span><b>0x8f2a</b></div>
+          <div class="console__event"><i class="dot dot--violet"></i><span>RISK PASS</span><b>0x8f2a</b></div>
+          <div class="console__event"><i class="dot dot--lime"></i><span>MATCHED</span><b>0.842 BTC</b></div>
+          <div class="console__event"><i class="dot dot--amber"></i><span>LEDGER POSTED</span><b>OK</b></div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <div class="console__float console__float--trace">
+    <div class="float__head"><span>TRACE</span><span>7f3a·c2</span></div>
+    <div class="float__spans" data-trace-spans>
+      <div class="float__span"><span>HTTP</span><i style="--w:92%"></i></div>
+      <div class="float__span"><span>gRPC</span><i style="--w:54%"></i></div>
+      <div class="float__span"><span>MATCH</span><i style="--w:38%"></i></div>
+      <div class="float__span"><span>LEDGER</span><i style="--w:66%"></i></div>
+      <div class="float__span"><span>KAFKA</span><i style="--w:44%"></i></div>
+    </div>
+  </div>
+
+  <div class="console__float console__float--checks">
+    <div class="float__head"><span>INVARIANTS</span><span>ALL PASS</span></div>
+    <ul class="float__checks">
+      <li>BALANCE CONSERVED</li>
+      <li>SINGLE WRITER</li>
+      <li>IDEMPOTENT WRITE</li>
+    </ul>
+  </div>
+
+  <span class="console__badge">DEMO · 界面示意</span>
+</div>

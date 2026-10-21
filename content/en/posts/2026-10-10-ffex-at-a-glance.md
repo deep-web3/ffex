@@ -1,7 +1,7 @@
 ---
 title: "ffex at a Glance: A Complete Exchange Platform, Engineered Twice"
 date: 2026-10-10
-description: "What ffex is: a full digital-asset exchange solution covering spot, derivatives, OTC and custody — built twice, in Java and Go, from one contract-first blueprint."
+description: "What ffex is: a complete digital-asset exchange platform — spot, derivatives, options, OTC, custody, risk and admin — built twice from one blueprint."
 tags: ["Architecture", "Overview"]
 weight: 1
 ---
@@ -77,5 +77,7 @@ turn: [business domains](../2026-10-11-business-domain-breakdown/),
 One note on what you will *not* find here: this blog describes what the
 architecture is built to achieve and how it is organized. The internals —
 matching core data structures, capacity engineering, tuning playbooks — are
-shared with partners under NDA, not published. If that is the conversation
-you want, [talk to us](../2026-10-15-working-with-ffex/).
+shared with partners under NDA, not published. For the full capability map,
+see [capabilities](../../capabilities/) and the [dual stack](../../stack/).
+If that is the conversation you want,
+[talk to us](../../contact/).

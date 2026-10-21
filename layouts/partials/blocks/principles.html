@@ -1,0 +1,19 @@
+{{- $b := .b -}}
+<section class="block block--principles"{{ with $b.id }} id="{{ . }}"{{ end }}>
+  <div class="container principles">
+    <div class="principles__head">
+      {{ partial "block-head.html" (dict "b" $b) }}
+    </div>
+    <ol class="principles__list">
+      {{- range $i, $it := $b.items }}
+      <li class="principles__item" data-reveal style="--i:{{ $i }}">
+        <span class="principles__num">{{ $it.index | default (printf "%02d" (add $i 1)) }}</span>
+        <div class="principles__body">
+          <h3 class="principles__title">{{ $it.title }}</h3>
+          {{- with $it.desc }}<p class="principles__desc">{{ . }}</p>{{ end }}
+        </div>
+      </li>
+      {{- end }}
+    </ol>
+  </div>
+</section>

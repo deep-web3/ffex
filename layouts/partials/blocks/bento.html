@@ -1,0 +1,52 @@
+{{- $b := .b -}}
+{{- $variant := $b.variant | default "cards" -}}
+<section class="block block--bento block--bento-{{ $variant }}"{{ with $b.id }} id="{{ . }}"{{ end }}>
+  <div class="container">
+    {{ partial "block-head.html" (dict "b" $b) }}
+    {{- if eq $variant "surfaces" }}
+    <div class="surfaces">
+      {{- range $i, $it := $b.items }}
+      <article class="surface" data-reveal style="--i:{{ $i }}">
+        <div class="surface__art surface__art--{{ $i }}" aria-hidden="true">
+          <span class="surface__glow"></span>
+          <span class="surface__frame surface__frame--{{ if eq $i 0 }}wide{{ else if lt $i 3 }}tall{{ else }}code{{ end }}">
+            <i></i><i></i><i></i><i></i><i></i>
+          </span>
+        </div>
+        <div class="surface__body">
+          {{- with $it.tag }}<p class="eyebrow">{{ . }}</p>{{ end }}
+          <h3 class="surface__title">{{ $it.title }}</h3>
+          {{- with $it.desc }}<p class="surface__desc">{{ . }}</p>{{ end }}
+          {{- with $it.points }}
+          <ul class="surface__points">
+            {{- range . }}<li>{{ . }}</li>{{ end }}
+          </ul>
+          {{- end }}
+          {{- with $it.linkLabel }}
+          <a class="link-arrow" href="{{ partial "href.html" $it.href }}">{{ . }}<span aria-hidden="true">↗</span></a>
+          {{- end }}
+        </div>
+      </article>
+      {{- end }}
+    </div>
+    {{- else }}
+    <div class="bento">
+      {{- range $i, $it := $b.items }}
+      {{- $accent := $it.accent | default "violet" }}
+      <article class="bento__card accent-{{ $accent }}{{ with $it.span }} bento__card--{{ . }}{{ end }}" data-reveal style="--i:{{ $i }}">
+        <div class="bento__top">
+          {{- with $it.tag }}<p class="bento__tag">{{ . }}</p>{{ end }}
+          {{- with $it.icon }}<span class="bento__icon">{{ partial "icon.html" . }}</span>{{ end }}
+        </div>
+        <h3 class="bento__title">{{ $it.title }}</h3>
+        {{- with $it.desc }}<p class="bento__desc">{{ . }}</p>{{ end }}
+        {{- with $it.linkLabel }}
+        <a class="link-arrow bento__link" href="{{ partial "href.html" $it.href }}">{{ . }}<span aria-hidden="true">↗</span></a>
+        {{- end }}
+      </article>
+      {{- end }}
+    </div>
+    {{- end }}
+    {{- with $b.note }}<p class="block-note">{{ . }}</p>{{ end }}
+  </div>
+</section>

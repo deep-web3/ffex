@@ -1,0 +1,8 @@
+{{- $b := .b -}}
+<section class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    {{- range seq 2 }}
+      {{- range $b.items }}<span class="marquee__item">{{ . }}</span><span class="marquee__sep">✦</span>{{ end }}
+    {{- end }}
+  </div>
+</section>

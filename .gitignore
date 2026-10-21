@@ -3,6 +3,11 @@
 /resources/_gen/
 /.hugo_build.lock
 
+# Demo asset tooling (dev-only, not part of the site build)
+/demo-src/node_modules/
+/demo-src/.frames/
+/demo-src/out/
+
 # OS
 .DS_Store
 

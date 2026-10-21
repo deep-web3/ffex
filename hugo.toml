@@ -1,158 +1,63 @@
-# ffex — promotional blog for the ffex exchange platform solution.
-# Stack: Hugo + PaperMod (vendored under themes/PaperMod) + GitHub Pages.
-# Setup, publishing and giscus steps are documented in README.md.
+# ffex — buyer-facing site for the ffex exchange platform.
+# Stack: Hugo (pinned 0.168.0 extended, see .github/workflows/deploy.yml) +
+# a custom theme in layouts/, deployed to GitHub Pages on every push to main.
+# Structure, block schema and content rules: DESIGN.md.
 
 baseURL = "https://deep-web3.github.io/ffex/"
-locale = "en-us"
+title = "ffex — Exchange platform engineering"
 defaultContentLanguage = "en"
-title = "ffex — Exchange Platform Engineering"
-theme = "PaperMod"
-
+defaultContentLanguageInSubdir = false
 enableRobotsTXT = true
-enableEmoji = true
 enableGitInfo = false
-summaryLength = 70
+enableEmoji = false
+disableHugoGeneratorInject = true
 
 [pagination]
-  pagerSize = 10
+  pagerSize = 24
 
 [outputs]
-  home = ["HTML", "RSS", "JSON"]
+  home = ["HTML"]
+  section = ["HTML", "RSS"]
+  page = ["HTML"]
 
 [taxonomies]
   tag = "tags"
-  category = "categories"
 
 [markup]
-  [markup.highlight]
-    noClasses = false
-    lineNos = false
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = false
+  [markup.highlight]
+    noClasses = false
+    lineNos = false
 
 [params]
-  env = "production"
-  defaultTheme = "auto"
-  description = "ffex is a complete digital-asset exchange platform solution — spot, derivatives, OTC and custody — delivered as dual Java and Go implementations with production-grade observability and fund-safety discipline."
-  author = "ffex Engineering"
-  [params.label]
-    icon = "ffex-logo.svg"
-    iconHeight = 32
-  keywords = [
-    "digital asset exchange",
-    "cryptocurrency exchange platform",
-    "matching engine",
-    "spot trading",
-    "perpetual futures",
-    "options trading",
-    "OTC trading",
-    "wallet custody",
-    "exchange infrastructure",
-    "white label exchange solution",
-  ]
-
-  ShowReadingTime = true
-  ShowShareButtons = false
-  ShowPostNavLinks = true
-  ShowBreadCrumbs = true
-  ShowCodeCopyButtons = true
-  ShowWordCount = false
-  ShowToc = true
-  TocOpen = false
-
-  # Contact channels shown in the footer, About and contact pages.
+  description = "A complete digital-asset exchange platform, implemented twice — Java and Go — on one contract-first blueprint. Trading, custody, risk, market data, frontends and full-link observability, delivered as source you can own."
+  siteRepo = "https://github.com/deep-web3/ffex"
   contactTelegram = "https://t.me/bitdevops"
+  contactTelegramLabel = "@bitdevops"
   contactEmail = "horizonvideo@gmail.com"
-
-  # giscus comments (based on GitHub Discussions).
-  # Leave disabled until the repo exists — fill the three IDs per README.md,
-  # then flip `comments` to true.
-  comments = false
-  giscusRepo = "" # e.g. "your-org/ffex"
-  giscusRepoId = ""
-  giscusCategory = "Announcements"
-  giscusCategoryId = ""
-
-  [[params.socialIcons]]
-    name = "telegram"
-    url = "https://t.me/bitdevops"
-
-  [[params.socialIcons]]
-    name = "email"
-    url = "mailto:horizonvideo@gmail.com"
-
-# ---------------------------------------------------------------------------
-# Languages — English first (site root), Chinese under /zh/.
-# ---------------------------------------------------------------------------
+  ogImage = "og/ffex-og-en.png"
 
 [languages]
   [languages.en]
-    locale = "en-us"
     label = "English"
+    locale = "en-US"
     contentDir = "content/en"
     weight = 1
-    title = "ffex — Exchange Platform Engineering"
+    title = "ffex — Exchange platform engineering"
 
     [languages.en.params]
-      [languages.en.params.homeInfoParams]
-        Title = "ffex"
-        Content = "A complete digital-asset exchange platform — engineered for throughput, fund safety and full-stack observability. On this blog we publish what the architecture is built to achieve; the internals live behind an NDA. [Talk to us →](posts/working-with-ffex/)"
-
-    [languages.en.menu]
-      [[languages.en.menu.main]]
-        identifier = "home"
-        name = "Home"
-        url = "/"
-        weight = 1
-      [[languages.en.menu.main]]
-        identifier = "platform"
-        name = "Platform"
-        url = "/platform/"
-        weight = 2
-      [[languages.en.menu.main]]
-        identifier = "posts"
-        name = "Journal"
-        url = "/posts/"
-        weight = 3
-      [[languages.en.menu.main]]
-        identifier = "lang-switch"
-        name = "中文"
-        url = "/zh/"
-        weight = 9
+      description = "A complete digital-asset exchange platform, implemented twice — Java and Go — on one contract-first blueprint. Trading, custody, risk, market data, frontends and full-link observability, delivered as source you can own."
+      ogImage = "og/ffex-og-en.png"
 
   [languages.zh]
-    locale = "zh-cn"
     label = "中文"
+    locale = "zh-CN"
     contentDir = "content/zh"
     weight = 2
     title = "ffex — 交易所平台工程"
 
     [languages.zh.params]
-      description = "ffex 是一套完整的数字资产交易所平台方案——现货、衍生品、OTC 与钱包托管，以 Java/Go 双实现交付，具备生产级可观测性与资金安全纪律。"
-
-      [languages.zh.params.homeInfoParams]
-        Title = "ffex"
-        Content = "一套完整的数字资产交易所平台——为吞吐、资金安全与全链路可观测而设计。本站发布架构所要达成的能力与结果；核心实现细节只在 NDA 之后。[联系我们 →](posts/working-with-ffex/)"
-
-    [languages.zh.menu]
-      [[languages.zh.menu.main]]
-        identifier = "home"
-        name = "首页"
-        url = "/zh/"
-        weight = 1
-      [[languages.zh.menu.main]]
-        identifier = "platform"
-        name = "平台"
-        url = "/zh/platform/"
-        weight = 2
-      [[languages.zh.menu.main]]
-        identifier = "posts"
-        name = "文章"
-        url = "/zh/posts/"
-        weight = 3
-      [[languages.zh.menu.main]]
-        identifier = "lang-switch"
-        name = "English"
-        url = "/"
-        weight = 9
+      description = "一套完整的数字资产交易所平台，以 Java 与 Go 两套实现构建于同一份契约优先蓝图之上——交易、托管、风控、行情、前端与全链路可观测，以可真正拥有的源码交付。"
+      ogImage = "og/ffex-og-zh.png"

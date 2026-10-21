@@ -1,7 +1,7 @@
 ---
 title: "Fund Safety Is a Discipline, Not a Feature"
 date: 2026-10-13
-description: "The engineering rules that keep ffex balances honest: decimal-only money, conservation invariants, idempotency everywhere, single writers, reconciliation-driven recovery and custody segregation."
+description: "The disciplines that keep ffex balances honest: decimal-only money, conservation invariants, idempotency, single writers, reconciliation and custody segregation."
 tags: ["Fund Safety", "Reliability"]
 weight: 4
 ---

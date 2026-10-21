@@ -1,0 +1,60 @@
+{{- define "main" -}}
+{{- $p := . -}}
+{{- $isPost := eq .Section "posts" -}}
+<div class="reading-progress" data-reading-progress aria-hidden="true"></div>
+<article class="article">
+  <header class="article__head">
+    <div class="container">
+      {{- if $isPost }}<a class="link-arrow article__back" href="{{ "posts/" | relLangURL }}">← {{ i18n "post_back" }}</a>{{ end }}
+      <p class="eyebrow">{{ if $isPost }}{{ .Date.Format "2006-01-02" }} · INSIGHT{{ else }}{{ .Section | upper }}{{ end }}</p>
+      <h1 class="article__title">{{ .Title }}</h1>
+      {{- with .Description }}<p class="article__lede">{{ . }}</p>{{ end }}
+      {{- if $isPost }}
+      <div class="article__meta">
+        <span>{{ i18n "post_published" }} <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time></span>
+        <span>{{ .ReadingTime }} {{ i18n "post_minutes" }}</span>
+      </div>
+      {{- end }}
+    </div>
+  </header>
+
+  {{- if $isPost }}
+  <div class="container article__layout">
+    <div class="article__aside">
+      {{- with .Params.tags }}
+      <div class="article__tags">
+        <p class="eyebrow">{{ i18n "post_tags" }}</p>
+        <ul>
+          {{- range . }}<li><a class="tag" href="{{ printf "tags/%s/" (urlize .) | relLangURL }}">{{ . }}</a></li>{{ end }}
+        </ul>
+      </div>
+      {{- end }}
+      {{- if .TableOfContents }}
+      <div class="article__toc">
+        <p class="eyebrow">{{ i18n "post_toc" }}</p>
+        {{ .TableOfContents }}
+      </div>
+      {{- end }}
+    </div>
+    <div class="article__body">{{ .Content }}</div>
+  </div>
+  {{- else }}
+  <div class="container article__body article__body--page">{{ .Content }}</div>
+  {{- end }}
+
+  {{- if $isPost }}
+  <footer class="article__foot">
+    <div class="container">
+      <div class="article__cta">
+        <div>
+          <p class="eyebrow">{{ i18n "post_cta_kicker" }}</p>
+          <h2>{{ i18n "post_cta_title" }}</h2>
+          <p>{{ i18n "post_cta_lede" }}</p>
+        </div>
+        <a class="btn btn--primary" href="{{ "contact/" | relLangURL }}">{{ i18n "post_cta_action" }}{{ partial "icon.html" "arrow" }}</a>
+      </div>
+    </div>
+  </footer>
+  {{- end }}
+</article>
+{{- end -}}

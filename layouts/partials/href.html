@@ -1,0 +1,6 @@
+{{- $h := . -}}
+{{- if or (hasPrefix $h "http://") (hasPrefix $h "https://") (hasPrefix $h "mailto:") (hasPrefix $h "tel:") (hasPrefix $h "#") -}}
+{{- $h -}}
+{{- else -}}
+{{- $h | relLangURL -}}
+{{- end -}}

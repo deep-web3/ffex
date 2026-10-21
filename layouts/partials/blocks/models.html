@@ -1,0 +1,27 @@
+{{- $b := .b -}}
+<section class="block block--models"{{ with $b.id }} id="{{ . }}"{{ end }}>
+  <div class="container">
+    {{ partial "block-head.html" (dict "b" $b) }}
+    <div class="models{{ if gt (len $b.items) 4 }} models--full{{ else }} models--condensed{{ end }}">
+      {{- range $i, $it := $b.items }}
+      <article class="model accent-{{ $it.accent | default "violet" }}{{ if $it.featured }} model--featured{{ end }}" data-reveal style="--i:{{ $i }}">
+        <div class="model__top">
+          <span class="model__badge">{{ $it.badge }}</span>
+          {{- if $it.featured }}<span class="model__flag">{{ i18n "recommended" }}</span>{{ end }}
+        </div>
+        <h3 class="model__name">{{ $it.name }}</h3>
+        {{- with $it.subtitle }}<p class="model__sub">{{ . }}</p>{{ end }}
+        <p class="model__desc">{{ $it.desc }}</p>
+        {{- with $it.deliverables }}
+        <ul class="model__list">
+          {{- range . }}<li>{{ partial "icon.html" "check" }}<span>{{ . }}</span></li>{{ end }}
+        </ul>
+        {{- end }}
+        {{- with $it.fit }}<p class="model__fit"><span>{{ i18n "model_fit" }}</span>{{ . }}</p>{{ end }}
+        {{- with $it.cta }}<a class="btn btn--ghost btn--sm model__cta" href="{{ partial "href.html" .href }}">{{ .label }}{{ partial "icon.html" "arrow" }}</a>{{ end }}
+      </article>
+      {{- end }}
+    </div>
+    {{- with $b.note }}<p class="block-note">{{ . }}</p>{{ end }}
+  </div>
+</section>

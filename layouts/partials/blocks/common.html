@@ -1,0 +1,31 @@
+{{- $b := .b -}}
+<section class="block block--common"{{ with $b.id }} id="{{ . }}"{{ end }}>
+  <div class="container">
+    {{ partial "block-head.html" (dict "b" $b) }}
+    <div class="common">
+      <div class="common__list">
+        {{- range $i, $it := $b.items }}
+        <article class="common__item" data-reveal style="--i:{{ $i }}">
+          <span class="common__icon accent-{{ $it.accent | default "violet" }}">{{ partial "icon.html" ($it.icon | default "blocks") }}</span>
+          <div class="common__body">
+            {{- with $it.tag }}<p class="eyebrow">{{ . }}</p>{{ end }}
+            <h3 class="common__title">{{ $it.title }}</h3>
+            {{- with $it.desc }}<p class="common__desc">{{ . }}</p>{{ end }}
+            {{- with $it.bullets }}
+            <ul class="common__bullets">
+              {{- range . }}<li>{{ . }}</li>{{ end }}
+            </ul>
+            {{- end }}
+            {{- with $it.linkLabel }}
+            <a class="link-arrow" href="{{ partial "href.html" $it.href }}">{{ . }}<span aria-hidden="true">↗</span></a>
+            {{- end }}
+          </div>
+        </article>
+        {{- end }}
+      </div>
+      <div class="common__art" aria-hidden="true">
+        {{ partial "viz/orbit.html" .p }}
+      </div>
+    </div>
+  </div>
+</section>

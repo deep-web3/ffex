@@ -1,0 +1,17 @@
+{{- $b := .b -}}
+<section class="block block--faq"{{ with $b.id }} id="{{ . }}"{{ end }}>
+  <div class="container">
+    {{ partial "block-head.html" (dict "b" $b) }}
+    <div class="faq">
+      {{- range $b.items }}
+      <details class="faq__item" data-reveal>
+        <summary class="faq__q">
+          <span>{{ .q }}</span>
+          <span class="faq__sign" aria-hidden="true"></span>
+        </summary>
+        <div class="faq__a"><p>{{ .a | safeHTML }}</p></div>
+      </details>
+      {{- end }}
+    </div>
+  </div>
+</section>
