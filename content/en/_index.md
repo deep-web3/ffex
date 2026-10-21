@@ -332,7 +332,7 @@ blocks:
           - "Tests and runbooks"
         fit: "Platforms with a specific gap"
         cta: { label: "Module scope", href: "cooperation/" }
-    note: "The full cooperation page covers support and operations. Pricing is scoped by platform scope, licence model and support level — shared after an NDA discussion."
+    note: "Source code is part of the delivery under a signed licence and is never published on this site. The full cooperation page covers support and operations; pricing is scoped by platform scope, licence model and support level, shared after an NDA discussion."
 
   - type: process
     id: process

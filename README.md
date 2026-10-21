@@ -15,10 +15,13 @@ deployed to **GitHub Pages** by GitHub Actions on every push to `main`.
 ![Mobile — demo showcase](docs/preview/mobile.png)
 
 The site is a marketing artefact: it publishes capability, design intent and
-engagement models. It deliberately contains no platform source code, no measured
-benchmarks, no server topology and no client identities. Those stay under NDA.
-See [Content rules](#content-rules) and [`DESIGN.md`](DESIGN.md) for the block
-schema, visual system and acceptance criteria.
+engagement models. This public repository contains **only the marketing site**.
+No exchange platform source code, internal interfaces or configuration is
+published here; source code is delivered under a signed licence and is never
+published on the site. The site also contains no measured benchmarks, server
+topology or client identities. See [Content rules](#content-rules) and
+[`DESIGN.md`](DESIGN.md) for the block schema, visual system and acceptance
+criteria.
 
 ## Stack
 
