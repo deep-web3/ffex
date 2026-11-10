@@ -18,7 +18,13 @@
         {{- end }}
       </div>
       {{- end }}
-      {{- if and (eq $variant "home") $b.stats }}
+      {{- if and (eq $variant "home") $b.chips }}
+      <ul class="hero__chips">
+        {{- range $b.chips }}
+        <li class="hero__chip{{ with .tone }} hero__chip--{{ . }}{{ end }}"><span class="hero__chip-dot" aria-hidden="true"></span>{{ .label }}</li>
+        {{- end }}
+      </ul>
+      {{- else if and (eq $variant "home") $b.stats }}
       <dl class="hero__stats">
         {{- range $b.stats }}
         <div class="hero__stat"><dt>{{ .value }}</dt><dd>{{ .label }}</dd></div>

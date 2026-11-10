@@ -1,3 +1,10 @@
 {{- $scripts := slice (resources.Get "js/main.js") (resources.Get "js/hero-viz.js") -}}
-{{- $js := $scripts | resources.Concat "js/site.js" | minify | fingerprint -}}
+{{- $target := "js/site.js" -}}
+{{- range .Params.blocks -}}
+  {{- if eq .type "capwall" -}}
+    {{- $scripts = $scripts | append (resources.Get "js/cap-viz.js") -}}
+    {{- $target = "js/site-cap.js" -}}
+  {{- end -}}
+{{- end -}}
+{{- $js := $scripts | resources.Concat $target | minify | fingerprint -}}
 <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>

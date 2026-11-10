@@ -5,114 +5,136 @@ translationKey: "home"
 blocks:
   - type: hero
     variant: home
-    kicker: "DUAL-STACK EXCHANGE ENGINE · JAVA × GO"
+    kicker: "OWN THE STACK · JAVA × GO"
     title: "The exchange platform you can <em>own</em>."
-    lede: "Two complete implementations of a digital-asset exchange, built on one contract-first blueprint. Trading, market making, custody, risk, market data, institutional APIs, frontends and full-link observability — delivered as source you can build, deploy and extend."
+    lede: "Two complete implementations of a digital-asset exchange, built on one contract-first blueprint. Spot and derivatives, market making, custody, risk, market data, institutional APIs, frontends and full-link observability — delivered as source you can build, deploy and extend."
     media: console
     actions:
       - { label: "Explore capabilities", href: "capabilities/", style: "primary" }
       - { label: "Get source & terms", href: "cooperation/", style: "ghost" }
-    stats:
-      - { value: "02", label: "CEX stacks" }
-      - { value: "03", label: "Frontends" }
-      - { value: "01", label: "Contract source" }
-      - { value: "E2E", label: "Full-link trace" }
+    chips:
+      - { label: "Spot · Perpetuals · Options", tone: "cyan" }
+      - { label: "Java + Go, one blueprint", tone: "violet" }
+      - { label: "Source licence available", tone: "lime" }
+      - { label: "Full-link trace built in" }
     footnote: "Interface shown is an illustrative demo. No live market data."
 
   - type: marquee
-    items: ["SPOT", "PERPETUALS", "OPTIONS", "OTC", "MARKET MAKING", "WALLET & CUSTODY", "RISK & LIQUIDATION", "CLEARING", "MARKET DATA", "OPEN API", "ADMIN & OPS", "NOTIFICATION", "DESIGN SYSTEM", "CUSTODY INTEGRATIONS", "FULL-LINK TRACE", "KUBERNETES"]
+    items: ["SPOT", "PERPETUALS", "OPTIONS", "OTC", "MARKET MAKING", "WALLET & CUSTODY", "RISK & LIQUIDATION", "CLEARING", "MARKET DATA", "OPEN API", "ADMIN & OPS", "NOTIFICATION", "FULL-LINK TRACE", "KUBERNETES", "SOURCE DELIVERY"]
 
-  - type: bento
+  - type: capwall
     id: capabilities
-    kicker: "01 / CAPABILITY MAP"
-    title: "Everything an exchange needs, <em>in one system</em>."
-    lede: "Not a feature list. A set of owned business domains with clear boundaries, shared contracts and one observability model."
+    kicker: "CAPABILITY MAP"
+    title: "Every market, every desk, <em>one system</em>."
+    lede: "Not a feature list. A set of owned business domains with clear boundaries, shared contracts and one observability model — each one running here as a live scene."
+    filterLabel: "Filter capability domains"
+    hint: "Live synthetic scenes · illustrative, not live data"
+    filters:
+      - { id: "all", label: "All systems" }
+      - { id: "trading", label: "Trading" }
+      - { id: "platform", label: "Platform" }
+      - { id: "operations", label: "Operations" }
     items:
-      - tag: "01 / TRADING"
-        title: "Spot & derivatives core"
-        desc: "Order lifecycle, price-time priority matching, fills, positions and settlement — deterministic state transitions designed for recovery."
-        icon: "bolt"
-        accent: "violet"
+      - group: trading
+        scene: spot
+        tag: "SPOT"
+        title: "Spot market core"
+        desc: "Order lifecycle, price-time priority matching and settlement, with deterministic state transitions built for recovery."
         href: "capabilities/"
-        linkLabel: "Capability map"
-      - tag: "02 / CUSTODY"
+        linkLabel: "Spot domain"
+      - group: trading
+        scene: perp
+        tag: "PERPETUALS"
+        title: "Perpetuals & funding"
+        desc: "Positions, margin mode, funding cycles and liquidation paths held to the same ledger invariants as spot."
+        href: "capabilities/"
+        linkLabel: "Derivatives domain"
+      - group: trading
+        scene: options
+        tag: "OPTIONS"
+        title: "Options & structured products"
+        desc: "Contract specification, order and position tracking, with payoff and settlement rules kept explicit."
+        href: "capabilities/"
+        linkLabel: "Options domain"
+      - group: trading
+        scene: match
+        tag: "MATCHING"
+        title: "Matching engine"
+        desc: "One ordered writer per instrument, queue fairness and replay-safe events from gateway to fill."
+        href: "capabilities/"
+        linkLabel: "Matching core"
+      - group: trading
+        scene: otc
+        tag: "OTC"
+        title: "OTC & block trades"
+        desc: "Quote requests, negotiated blocks and settlement recorded with the same audit trail as the public book."
+        href: "capabilities/"
+        linkLabel: "OTC desk"
+      - group: platform
+        scene: custody
+        tag: "CUSTODY"
         title: "Wallet & custody"
         desc: "Deposits, withdrawals, hot and cold separation, on-chain reconciliation and auditable approval paths."
-        icon: "wallet"
-        accent: "cyan"
         href: "capabilities/"
         linkLabel: "Custody domain"
-      - tag: "03 / RISK"
+      - group: platform
+        scene: risk
+        tag: "RISK"
         title: "Risk & liquidation"
-        desc: "Margin, exposure, liquidation and pre-trade checks with explicit limits and fail-closed defaults."
-        icon: "shield"
-        accent: "amber"
+        desc: "Margin, exposure, pre-trade checks and liquidation with explicit limits and fail-closed defaults."
         href: "capabilities/"
         linkLabel: "Risk domain"
-      - tag: "04 / CLEARING"
-        title: "Clearing & settlement"
-        desc: "Ledger postings, balance conservation, fee settlement and reconciliation invariants — every movement traceable."
-        icon: "scale"
-        accent: "lime"
+      - group: platform
+        scene: clearing
+        tag: "CLEARING"
+        title: "Clearing & ledger"
+        desc: "Append-only postings, balance conservation and reconciliation invariants — every movement traceable."
         href: "capabilities/"
         linkLabel: "Clearing domain"
-      - tag: "05 / MARKET DATA"
+      - group: platform
+        scene: marketdata
+        tag: "MARKET DATA"
         title: "Market data & streams"
-        desc: "Depth, trades, klines and streaming market data with bounded backpressure and consistent snapshots."
-        icon: "chart"
-        accent: "cyan"
+        desc: "Depth, trades and klines with bounded backpressure and consistent snapshots for every consumer."
         href: "capabilities/"
         linkLabel: "Market data"
-      - tag: "06 / IDENTITY"
-        title: "Identity & admin"
-        desc: "TOTP multi-factor admin access, role-based permissions and audit trails for every privileged action."
-        icon: "lock"
-        accent: "violet"
-        href: "capabilities/"
-        linkLabel: "Admin & identity"
-      - tag: "07 / FRONTENDS"
-        title: "Frontends & interfaces"
-        desc: "Admin console, H5 and native app, HTTP APIs and WebSocket streams — built on shared contracts and one design language."
-        icon: "layers"
-        accent: "cyan"
-        span: "wide"
-        href: "capabilities/"
-        linkLabel: "Product surfaces"
-      - tag: "08 / COMMON"
-        title: "Notification & common platform"
-        desc: "Dedicated notification platform with Java and Go SDKs, versioned infrastructure components, and release tooling shared by every service."
-        icon: "bell"
-        accent: "amber"
-        span: "wide"
-        href: "capabilities/"
-        linkLabel: "Common capabilities"
-      - tag: "09 / LIQUIDITY"
-        title: "Market making & liquidity"
-        desc: "A market-making runner and quoting model for new listings, so a market opens with usable depth instead of an empty book."
-        icon: "bolt"
-        accent: "lime"
-        span: "wide"
-        href: "capabilities/"
-        linkLabel: "Liquidity domain"
-      - tag: "10 / API ACCESS"
+      - group: platform
+        scene: api
+        tag: "OPEN API"
         title: "Institutional API access"
-        desc: "Signed REST and WebSocket access with per-key credentials, replay protection and an independent traffic policy for algorithmic clients."
-        icon: "code"
-        accent: "violet"
-        span: "wide"
+        desc: "Signed REST and WebSocket access with per-key credentials, replay protection and independent traffic policy."
         href: "capabilities/"
         linkLabel: "API program"
+      - group: operations
+        scene: admin
+        tag: "ADMIN"
+        title: "Admin, identity & audit"
+        desc: "TOTP multi-factor access, role-based permissions and an audit trail for every privileged action."
+        href: "capabilities/"
+        linkLabel: "Admin & identity"
+      - group: operations
+        scene: notify
+        tag: "NOTIFY"
+        title: "Notification platform"
+        desc: "One message model across email, SMS and chat channels, with receipts and retries as first-class states."
+        href: "capabilities/"
+        linkLabel: "Common platform"
+    note: "Scenes are generated in the browser from synthetic data. They illustrate system behaviour; they are not screenshots of a running venue."
 
   - type: showcase
     id: demos
-    kicker: "02 / INTERFACE PREVIEW"
+    kicker: "INTERFACE PREVIEW"
     title: "See the system <em>in motion</em>."
-    lede: "Five generated tours: the trading terminal, matching and ledger path, full-link traces, the risk console and the notification platform."
+    lede: "Generated tours of the surfaces your team will operate: the trading terminal, the matching and ledger path, full-link traces, the risk console and the notification platform."
+    railLabel: "Guided previews"
+    hint: "Each loop is a generated interface demo with sample data. Switch with the list or the arrow keys."
     note: "All visuals are illustrative demos generated with sample data — not live market data, and not screenshots of any client system."
     items:
       - id: terminal
         tab: "Trading terminal"
         tag: "SURFACE / TRADING"
+        chip: "ORDER ENTRY · DEPTH · POSITIONS"
+        chrome: "ffex · trading terminal"
         title: "Spot & derivatives terminal"
         desc: "Order entry, depth, candles and positions in one workspace — the surface your traders live in."
         video: "demo/terminal.webm"
@@ -126,6 +148,8 @@ blocks:
       - id: matching
         tab: "Matching & ledger"
         tag: "CORE / MATCHING"
+        chip: "GATEWAY → RISK → MATCH → LEDGER"
+        chrome: "ffex · matching path"
         title: "Matching and ledger path"
         desc: "An order's journey from gateway to risk, matching core and ledger — with invariants checked at every boundary."
         video: "demo/matching.webm"
@@ -139,6 +163,8 @@ blocks:
       - id: trace
         tab: "Full-link trace"
         tag: "OBSERVABILITY / TRACE"
+        chip: "HTTP · WS · gRPC · KAFKA"
+        chrome: "ffex · trace explorer"
         title: "One trace, end to end"
         desc: "HTTP, WebSocket, gRPC, matching, MySQL and Kafka linked in a single causality chain, ready for investigation."
         video: "demo/trace.webm"
@@ -152,6 +178,8 @@ blocks:
       - id: admin
         tab: "Risk console"
         tag: "OPERATIONS / ADMIN"
+        chip: "TOTP · APPROVALS · AUDIT"
+        chrome: "ffex · risk console"
         title: "Risk and operations console"
         desc: "Withdrawal approvals, exposure review and an audit trail for every privileged action."
         video: "demo/admin.webm"
@@ -165,6 +193,8 @@ blocks:
       - id: notify
         tab: "Notification"
         tag: "COMMON / NOTIFY"
+        chip: "EMAIL · SMS · CHAT"
+        chrome: "ffex · notification platform"
         title: "Notification platform"
         desc: "One message model, multiple delivery channels, with receipts and retries handled as first-class states."
         video: "demo/notify.webm"
@@ -178,9 +208,13 @@ blocks:
 
   - type: stack
     id: stack
-    kicker: "03 / DUAL STACK"
+    kicker: "DUAL STACK"
     title: "Java or Go. <em>Same blueprint</em>."
-    lede: "Choose the runtime that fits your team and your operations. Both stacks implement the same domain semantics from one contract source."
+    lede: "Choose the runtime that fits your team and your operations. Both stacks implement the same domain semantics from one contract source — and neither one is a port of the other."
+    band:
+      left: { title: "Java", meta: "JVM · enterprise ecosystem" }
+      core: { title: "One contract source", meta: "proto · domain semantics · error model" }
+      right: { title: "Go", meta: "goroutines · lean runtime" }
     items:
       - name: "Java"
         tag: "JVM · ENTERPRISE ECOSYSTEM"
@@ -226,7 +260,7 @@ blocks:
 
   - type: trace
     id: observability
-    kicker: "04 / FULL-LINK OBSERVABILITY"
+    kicker: "FULL-LINK OBSERVABILITY"
     title: "Every trade can be <em>explained</em>."
     lede: "Tracing is not a dashboard bolted on afterwards. One trace identity runs from the edge through matching, storage and async workers."
     media:
@@ -251,7 +285,7 @@ blocks:
 
   - type: common
     id: common
-    kicker: "05 / COMMON PLATFORM"
+    kicker: "COMMON PLATFORM"
     title: "The layer that holds <em>everything together</em>."
     lede: "Shared capabilities are owned, versioned and independently replaceable — not copy-pasted into each service."
     items:
@@ -288,7 +322,7 @@ blocks:
 
   - type: principles
     id: principles
-    kicker: "06 / ENGINEERING DISCIPLINE"
+    kicker: "ENGINEERING DISCIPLINE"
     title: "Fund safety is a <em>design constraint</em>."
     lede: "Exchange software is judged on what happens when something goes wrong. These rules are enforced in the architecture, not in a checklist."
     items:
@@ -300,12 +334,12 @@ blocks:
 
   - type: models
     id: cooperation
-    kicker: "07 / COOPERATION"
+    kicker: "COOPERATION"
     title: "Choose how you want to <em>own it</em>."
-    lede: "From full source licensing to turnkey delivery and joint builds — the engagement model follows your team, not the other way around."
+    lede: "Source licensing, direct delivery or a joint build: the engagement follows your team, not the other way around. Every model ends with the codebase and its documentation in your hands."
     items:
       - id: source
-        badge: "01 / SOURCE LICENCE"
+        badge: "SOURCE LICENCE"
         name: "Source-code delivery"
         subtitle: "Own the codebase"
         desc: "Full platform source in Java, Go or both, with documentation, deployment assets and a defined update window."
@@ -319,8 +353,8 @@ blocks:
         fit: "Teams with engineering capacity"
         cta: { label: "Source terms", href: "cooperation/" }
       - id: turnkey
-        badge: "02 / DIRECT DELIVERY"
-        name: "Turnkey delivery"
+        badge: "DIRECT DELIVERY"
+        name: "Direct delivery"
         subtitle: "We ship with you"
         desc: "We deploy, configure and integrate with your team on your infrastructure, through go-live and handover."
         accent: "cyan"
@@ -331,7 +365,7 @@ blocks:
         fit: "Operators who need speed"
         cta: { label: "Delivery scope", href: "cooperation/" }
       - id: joint
-        badge: "03 / JOINT BUILD"
+        badge: "JOINT BUILD"
         name: "Joint build"
         subtitle: "Co-build the next line"
         desc: "A shared engineering team for new product lines, regional requirements and third-party integrations."
@@ -343,7 +377,7 @@ blocks:
         fit: "Established operators"
         cta: { label: "Joint model", href: "cooperation/" }
       - id: custom
-        badge: "04 / CUSTOM MODULES"
+        badge: "CUSTOM MODULES"
         name: "Custom modules"
         subtitle: "Solve one hard problem"
         desc: "A matching layer, custody domain, risk engine or observability stack, integrated into an existing platform."
@@ -358,18 +392,18 @@ blocks:
 
   - type: process
     id: process
-    kicker: "08 / HOW IT STARTS"
+    kicker: "HOW IT STARTS"
     title: "From first call to <em>running exchange</em>."
     lede: "A structured path with written scope and acceptance criteria — no vague demos, no open-ended discovery."
     steps:
-      - { title: "Intro call", meta: "STEP 01", desc: "Goals, scope, constraints and timing. Short — and an engineer joins the first conversation." }
-      - { title: "Technical deep-dive", meta: "STEP 02 · NDA", desc: "Architecture, matching core, data and observability internals: the parts that stay off this site." }
-      - { title: "Scope & proposal", meta: "STEP 03", desc: "Module scope, licence model, delivery plan and acceptance criteria, written down." }
-      - { title: "Delivery & handover", meta: "STEP 04", desc: "Staged delivery, acceptance, deployment support and source handover with documentation." }
+      - { title: "Intro call", meta: "SCOPING", desc: "Goals, scope, constraints and timing. Short — and an engineer joins the first conversation." }
+      - { title: "Technical deep-dive", meta: "TECHNICAL · NDA", desc: "Architecture, matching core, data and observability internals: the parts that stay off this site." }
+      - { title: "Scope & proposal", meta: "PROPOSAL", desc: "Module scope, licence model, delivery plan and acceptance criteria, written down." }
+      - { title: "Delivery & handover", meta: "DELIVERY", desc: "Staged delivery, acceptance, deployment support and source handover with documentation." }
 
   - type: insights
     id: insights
-    kicker: "09 / INSIGHTS"
+    kicker: "INSIGHTS"
     title: "Engineering notes from <em>the platform</em>."
     lede: "How the platform is designed to behave: domain boundaries, throughput design, fund safety, observability and operations."
     limit: 3

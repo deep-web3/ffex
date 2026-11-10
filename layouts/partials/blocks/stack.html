@@ -3,6 +3,22 @@
   <div class="container">
     {{ partial "block-head.html" (dict "b" $b) }}
     <div class="stack">
+      {{- with $b.band }}
+      <div class="stack-band" data-reveal>
+        <div class="stack-band__side stack-band__side--a">
+          <span class="stack-band__lang">{{ .left.title }}</span>
+          <code>{{ .left.meta }}</code>
+        </div>
+        <div class="stack-band__core">
+          <strong>{{ .core.title }}</strong>
+          <span>{{ .core.meta }}</span>
+        </div>
+        <div class="stack-band__side stack-band__side--b">
+          <span class="stack-band__lang">{{ .right.title }}</span>
+          <code>{{ .right.meta }}</code>
+        </div>
+      </div>
+      {{- end }}
       <div class="stack__cards">
         {{- range $i, $it := $b.items }}
         <article class="stack__card accent-{{ $it.accent | default "violet" }}" data-reveal style="--i:{{ $i }}">

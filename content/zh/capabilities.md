@@ -17,7 +17,7 @@ blocks:
 
   - type: bento
     kicker: "01 / 业务域"
-    title: "十二个业务域，<br>一套<em>账户与账本</em>。"
+    title: "每个业务域，<br>一套<em>账户与账本</em>。"
     lede: "每个业务域拥有自己的数据与不变量。交易主链通过类型化契约与有序事件在域之间流转，绝不绕过边界去读别的域的表。"
     note: "期权、OTC 与做市都是一等公民产品域，不是外挂模块。"
     items:
@@ -97,7 +97,7 @@ blocks:
   - type: bento
     variant: surfaces
     kicker: "02 / 界面与接入"
-    title: "一个后端，<br><em>四种使用方式</em>。"
+    title: "一个后端，<br><em>多种使用方式</em>。"
     lede: "平台通过不同界面面向不同角色：运营、浏览器交易、移动交易与程序化接入——它们共用一套设计系统与同一个 Web 平台。"
     note: "界面示意 · 演示数据"
     items:

@@ -1,6 +1,6 @@
 ---
 title: "Cooperation"
-description: "Five ways to work with ffex: source-code licensing, turnkey delivery, joint build, custom modules and long-term support. Scope, licence and support set pricing."
+description: "Ways to work with ffex: source-code licensing, turnkey delivery, joint build, custom modules and long-term support. Scope, licence and support set pricing."
 translationKey: "cooperation"
 layout: "blocks"
 blocks:
@@ -8,7 +8,7 @@ blocks:
     variant: "compact"
     kicker: "WORK WITH FFEX"
     title: "Buy the platform.<br>Own the <em>source</em>."
-    lede: "Five ways to engage, from full source-code licensing to long-term operations. Scope, licence and support level are agreed before work starts, and pricing follows discovery. We do not publish a rate card."
+    lede: "Engagement ranges from full source-code licensing to long-term operations. Scope, licence and support level are agreed before work starts, and pricing follows discovery. We do not publish a rate card."
     media: "none"
     actions:
       - { label: "Request terms", href: "contact/", style: "primary" }
@@ -16,8 +16,8 @@ blocks:
 
   - type: "bento"
     kicker: "WHAT SETS THE PRICE"
-    title: "Price follows <em>three</em> things"
-    lede: "Every engagement is scoped differently, so there is no standard price list. These three factors decide the shape of the proposal you receive."
+    title: "Price follows <em>scope, licence and support</em>"
+    lede: "Every engagement is scoped differently, so there is no standard price list. Scope, licence model and support level decide the shape of the proposal you receive."
     note: "Pricing is quoted per engagement after discovery and, where needed, a mutual NDA."
     items:
       - tag: "01 / SCOPE"
@@ -39,7 +39,7 @@ blocks:
   - type: "models"
     id: "models"
     kicker: "ENGAGEMENT MODELS"
-    title: "Five ways to <em>own</em> it"
+    title: "Ways to <em>own</em> it"
     lede: "The platform underneath is the same in every model. What changes is how much you run, how much we run, and where the source sits."
     note: "Source code is part of delivery under licence. The exchange source itself is not published or linked from this site."
     items:

@@ -5,7 +5,8 @@ the two CEX implementations (Java and Go), the business domains and common
 platform (spot, derivatives, options, OTC, market making, custody, risk, market
 data, programmatic access), full-link observability, and the ways to acquire the
 platform — source-code licensing, direct delivery, joint build, custom modules
-and long-term support.
+and long-term support. On the home page, capabilities are presented as live,
+generated scenes rather than a static feature grid.
 
 English is served at `/`, Chinese at `/zh/`. Built with a custom Hugo theme and
 deployed to **GitHub Pages** by GitHub Actions on every push to `main`.
@@ -59,9 +60,11 @@ content/en/  content/zh/       # bilingual pages (same paths, same translationKe
   posts/                       # Insights articles + section index
 layouts/
   _default/                    # baseof, home, blocks, list, single, term, 404
-  partials/blocks/             # one partial per content block type
+  partials/blocks/             # one partial per block type (capwall.html = live wall)
   partials/                    # head, nav, footer, icons, visualisations
 assets/css/  assets/js/        # concatenated, minified and fingerprinted by Hugo
+  css/v2.css                   # second visual layer: palette, capwall, stage, band
+  js/cap-viz.js                # 12 procedural capability scenes (canvas)
 i18n/                          # UI strings (en.toml / zh.toml)
 static/
   brand/  favicon.svg          # logo mark
@@ -89,6 +92,9 @@ The complete field reference, page compositions and content rules are in
   prefixes them with the current language.
 - Never invent prices, measured performance figures, client names or internal
   identifiers. See [`DESIGN.md`](DESIGN.md) §7.
+- Never present service counts as a selling point (`02 stacks`, `12 domains`,
+  `five ways`); describe scope in words. The numbered eyebrows are section
+  indices, not service counts.
 
 ## Demo reels
 
@@ -98,6 +104,20 @@ Tooling is dev-only and not required by the site build; see
 [`demo-src/README.md`](demo-src/README.md) for the exact re-render commands.
 Videos autoplay muted, pause off-screen, expose a pause control and fall back to
 posters under `prefers-reduced-motion`.
+
+## Capability scenes
+
+The home capability wall is generated at runtime by `assets/js/cap-viz.js`. Each
+card declares `data-cap-scene` and the script draws one of 12 scenes:
+`match`, `custody`, `risk`, `clearing`, `marketdata`, `api`, `admin`, `notify`,
+`spot`, `perp`, `options`, `otc`. Scenes read the CSS custom properties, pause when
+off-screen, and render a single static frame under `prefers-reduced-motion`.
+Filter buttons (`data-cap-filter`) narrow the wall by card `group`
+(`all`, `trading`, `platform`, `operations`).
+
+Because the scene bundle only loads on pages that contain a `capwall` block,
+`scripts.html` concatenates it under a separate target (`js/site-cap.js`) so Hugo's
+per-target resource cache cannot serve a bundle without it.
 
 ## Content rules
 

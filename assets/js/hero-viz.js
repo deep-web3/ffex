@@ -87,7 +87,7 @@
 
     var padTop = 10;
     var padBottom = 18;
-    var padRight = 46;
+    var padRight = 52;
     var chartW = width - padRight;
     var chartH = height - padTop - padBottom;
 

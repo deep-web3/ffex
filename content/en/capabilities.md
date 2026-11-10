@@ -17,7 +17,7 @@ blocks:
 
   - type: bento
     kicker: "01 / BUSINESS DOMAINS"
-    title: "Twelve domains,<br>one <em>account and ledger</em>."
+    title: "Every domain,<br>one <em>account and ledger</em>."
     lede: "Each domain owns its data and its invariants. The trading chain moves between them by typed contract and ordered event — never by reaching into another domain's tables."
     note: "Options, OTC and market making are delivered as first-class product domains, not add-ons."
     items:
@@ -97,7 +97,7 @@ blocks:
   - type: bento
     variant: surfaces
     kicker: "02 / SURFACES"
-    title: "One backend,<br>four ways to <em>operate</em>."
+    title: "One backend,<br>every way to <em>operate</em>."
     lede: "The platform is exposed through interfaces for every role: operations, browser trading, mobile trading and programmatic clients — all sharing one design system and one web platform."
     note: "Illustrative interfaces · demo data"
     items:

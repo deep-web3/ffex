@@ -61,12 +61,13 @@ Footer: Platform / Cooperate / Resources columns + contact + legal notes.
 ## 4. Page composition
 
 Home blocks (in order):
-`hero(home, console)` → `marquee` → `bento(capabilities)` → `showcase(demos)` →
-`stack` → `trace(summary)` → `common` → `principles` → `models(condensed)` →
-`process` → `insights` → `cta`.
+`hero(home, console, chips)` → `marquee` → `capwall(12 live scenes, filters)` →
+`showcase(stage)` → `stack(band)` → `trace(summary)` → `common` → `principles` →
+`models(condensed)` → `process` → `insights` → `cta`.
 
 Capabilities: `hero(compact, orbit)` → `bento(business domains)` →
-`bento(frontends & interfaces, variant surfaces)` → `common` → `trace(summary)` → `cta`.
+`bento(frontends & interfaces, variant surfaces)` → `common` → `principles` →
+`trace(summary)` → `cta`.
 
 Stack: `hero(compact, stack)` → `stack` → `bento(architecture building blocks)` →
 `principles` → `cta`.
@@ -117,11 +118,18 @@ a gradient highlight. Use YAML double quotes and escape inner double quotes.
   media: console           # console | orbit | trace | stack | none
   actions:
     - { label: "Explore capabilities", href: "capabilities/", style: "primary" }
-    - { label: "Get source & pricing", href: "cooperation/", style: "ghost" }
-  stats:                   # home only, max 4
-    - { value: "02", label: "CEX STACKS · JAVA + GO" }
-  footnote: "Illustrative interface · demo data"
+    - { label: "Get source & terms", href: "cooperation/", style: "ghost" }
+  chips:                   # home only; capability pills, never counts
+    - { label: "Spot · Perpetuals · Options", tone: "cyan" }
+    - { label: "Java + Go, one blueprint", tone: "violet" }
+    - { label: "Source licence available", tone: "lime" }
+    - { label: "Full-link trace built in" }
+  footnote: "Interface shown is an illustrative demo. No live market data."
 ```
+
+`chips` replaces the old `stats` list: the public site must not present service
+counts (`02 stacks`, `01 contract source`, …). `stats` remains in the partial as a
+legacy fallback but must not be used again.
 
 **marquee** — `items: ["SPOT", "PERPETUALS", …]` (10–16 short labels, no punctuation).
 
@@ -130,12 +138,53 @@ a gradient highlight. Use YAML double quotes and escape inner double quotes.
 `span` (`normal|wide`), `href`, `linkLabel`.
 `surfaces` items may add `points: []` and render as product surfaces with device art.
 
-**showcase** — demo reel tabs. `items`: `id`, `tab` (short tab label), `title`, `desc`,
-`video` (`demo/<name>.webm`), `mp4` (`demo/<name>.mp4`), `poster` (`demo/<name>.jpg`),
-`bullets: []`, `badge` (optional).
+**capwall** — live capability wall; the visual centrepiece of the home page.
+Each card runs a procedural canvas scene, so the block is a **live** capability
+map rather than a static bento.
+
+```yaml
+- type: capwall
+  kicker: "CAPABILITY MAP"
+  title: "Every market, every desk, <em>one system</em>."
+  lede: "Not a feature list. … each one running here as a live scene."
+  filterLabel: "Filter capability domains"      # aria-label for the button group
+  hint: "Live synthetic scenes · illustrative, not live data"
+  filters:
+    - { id: "all", label: "All systems" }
+    - { id: "trading", label: "Trading" }
+  items:
+    - group: trading          # all | trading | platform | operations
+      scene: spot             # see scene list below
+      tag: "SPOT"
+      title: "Spot market core"
+      desc: "Order lifecycle, price-time priority matching and settlement …"
+      state: "ONLINE"         # optional, defaults to ONLINE
+      href: "capabilities/"
+      linkLabel: "Spot domain"
+```
+
+Scenes rendered by `assets/js/cap-viz.js`: `match`, `custody`, `risk`, `clearing`,
+`marketdata`, `api`, `admin`, `notify`, `spot`, `perp`, `options`, `otc`. The script
+reads the CSS custom properties, caps DPR at 2, pauses off-screen canvases via
+`IntersectionObserver`, and draws a single static frame under
+`prefers-reduced-motion`. Filter buttons are wired through `[data-cap-filter]`;
+cards carry `data-cap-group` and are hidden by the filter. The budget is 12 cards
+(3 columns × 4 rows at desktop, 2 columns at 1100, 1 column at 680).
+
+**showcase** — guided demo stage (rail of previews + one large player).
+`railLabel`: heading above the rail (no counts, e.g. "Guided previews").
+`hint`: small mono line under the rail. `items`: `id`, `tag`, `tab` (rail title),
+`title`, `desc`, `video` (`demo/<name>.webm`), `mp4` (`demo/<name>.mp4`),
+`poster` (`demo/<name>.jpg`), `bullets: []`, `chip` (bottom-left overlay label),
+`chrome` (window chrome label, e.g. "ffex · trading terminal").
 Common `note`: "Illustrative interfaces, generated demo data. Not live market data."
 
+The rail buttons keep the `main.js` contract: `[data-showcase-tab]` /
+`[data-showcase-panel]`, `role="tab"`, `aria-selected`, roving `tabindex`, and the
+`data-video-toggle` button inside every `.demo__frame`.
 **stack** — dual Java/Go section.
+`band`: `{ left: { title, meta }, core: { title, meta }, right: { title, meta } }` —
+optional converging diagram (`Java ⟷ One contract source ⟷ Go`) above the cards.
 `items`: `name`, `tag`, `badge`, `desc`, `bullets: []`, `accent`.
 `shared`: `{ title, desc, points: [ … ] }`.
 `matrix`: `{ columns: ["", "Java", "Go"], rows: [{ label, values: [ … ] }] }`.
@@ -176,7 +225,7 @@ in a first message), `note`.
 Icon names supported by `layouts/partials/icon.html`:
 `bolt, shield, chart, wallet, scale, pulse, bell, server, layers, cpu, globe, lock,
 blocks, database, activity, gauge, network, sparkles, code, check, telegram, mail,
-github, arrow, play, pause`.
+github, arrow, play, pause, menu, close`.
 
 ### Demo asset naming (owned by demo-lab)
 
@@ -194,17 +243,23 @@ static/og/ffex-og-zh.png        1200×630
 
 Web3-native, dark-first, premium infrastructure aesthetic. Not a generic SaaS page.
 
-- Background `#04050b` with layered aurora radial gradients, 1px grid (masked),
-  fine noise; panels are glass (`rgba(12,15,26,.72)` + 1px hairline + inner highlight).
-- Accents: violet `#8b6cff`, cyan `#2ee6c5`, lime `#c8ff62`, amber `#ffb45c`,
+- Background `#05060c` with layered aurora radial gradients, 1px grid (masked),
+  fine noise, one slow light beam and a faint orbit ring; panels are glass
+  (`rgba(11,15,26,.72)` + 1px hairline + inner highlight).
+- Accents: violet `#8168ff`, cyan `#2ff0c8`, lime `#d2ff62`, amber `#ffb45c`,
   rose `#ff6f91`. Brand gradient: violet → cyan → lime (used for highlight words,
-  marks, 1px borders, small glows; never as large flat fills).
+  marks, 1px borders, small glows; never as large flat fills). The v2 layer
+  (`assets/css/v2.css`, loaded after `pages.css`) carries these overrides.
 - Type: **Space Grotesk** (display, tight tracking, 300–700), **Inter** (body),
   **JetBrains Mono** (labels, data, numerals; uppercase letterspaced 0.14em).
   Self-hosted woff2 in `static/fonts/`; CJK falls back to system (`PingFang SC`,
   `Noto Sans SC`, `Microsoft YaHei`).
 - Layout: container 1240px, section rhythm 96–140px, asymmetric two-column heroes,
   bento grids, numbered sections ("01 / CAPABILITY MAP" style eyebrows).
+- Signature elements: a hero console with a thin elliptical halo ring, a
+  ticker-style marquee, the `capwall` live-scene cards (corner brackets + scanline),
+  the showcase stage (window chrome, rail with progress bar), and the `stack-band`
+  converged-source diagram.
 - Cards: 20–28px radius, hairline border, gradient glow on hover, no heavy shadows.
 - Buttons: pill primary = brand gradient text-on-dark or light fill; ghost = hairline.
 - Motion: scroll reveal (opacity + 18px rise), marquee, tab transitions, video loops,
@@ -223,6 +278,8 @@ This site is public and permanent. Never include:
 4. Client names, logos, testimonials or case studies (we have none to publish).
 5. Regulatory claims — operating an exchange requires the operator's own licences;
    say so in the footer note instead.
+6. Service counts as a selling point (`02 stacks`, `12 domains`, `five ways`).
+   Describe scope in words; the numbered eyebrows are section indices, not counts.
 
 Demo videos use generated data and generic identifiers; keep numbers plausible but
 obviously demo (e.g. BTC/USDT 68,4xx; order ids `0x…`). Add a "DEMO" watermark.
@@ -248,7 +305,10 @@ HUGO=~/Library/Caches/ffex-tools/pkg/Payload/hugo
 ```
 
 The GitHub workflow stays unchanged (build + deploy to Pages on push to `main`).
-No Node runtime dependency for the site build; `demo-src/` is a dev-only tool.
+Scripts are concatenated per page: `main.js` + `hero-viz.js` → `js/site.js`; a page
+whose blocks include `capwall` also appends `cap-viz.js` and switches the target to
+`js/site-cap.js`, so the cached shared bundle can never be served without the scene
+code. No Node runtime dependency for the site build; `demo-src/` is a dev-only tool.
 
 ## 9. File ownership (team)
 
@@ -278,8 +338,9 @@ Never edit files outside your scope. Never run `git add/commit/push`. Never touc
 
 Shipped in this repository:
 
-- Custom Hugo layouts in `layouts/` (no external theme), 16 block partials, custom
-  design system in `assets/css/`, motion/canvas/video behaviour in `assets/js/`.
+- Custom Hugo layouts in `layouts/` (no external theme), 17 block partials (the
+  2026-11-10 v2 redesign added `capwall`), custom design system in `assets/css/`,
+  motion/canvas/video behaviour in `assets/js/`.
 - Bilingual EN/ZH pages: home, capabilities, dual stack, observability,
   cooperation, contact, about, insights and 404; `/platform/` → `/capabilities/`
   aliases; language switch and `hreflang` pairs on every page.
@@ -293,7 +354,46 @@ Shipped in this repository:
   1440/1280/1100/768/390; reduced-motion and no-JS fallbacks checked; demo videos
   verified at 1440×900 / 30 fps / 14.00 s with a seamless loop.
 
+### 2026-11-10 v2 redesign (Web3 buyer-facing)
+
+Second pass, requested as a visual redesign plus a capability story:
+
+- New `assets/css/v2.css` layer (loaded last in `head.html`) recolours the site to
+  `#05060c` / `#8168ff` / `#2ff0c8` / `#d2ff62` and restyles hero, ticker, capwall,
+  showcase, stack band, trace, principles, models, process, CTA and footer.
+- New `capwall` block + `assets/js/cap-viz.js`: 12 procedural canvas scenes driven by
+  `data-cap-scene`, with group filters, intersection-based pausing and a
+  reduced-motion static frame. The home capability section is now literally moving,
+  not a static bento.
+- `showcase` rebuilt as an editorial stage: rail of guided previews on the left with
+  an active progress bar, one large player on the right, window chrome and a
+  generated-demo chip. Existing tab/video JS hooks were preserved unchanged.
+- `hero` home variant switched from numeric stats to capability `chips`; every
+  count-framed headline was removed ("Twelve domains" → "Every domain", "four ways to
+  operate" → "every way to operate", "Five ways" → "Ways", "Price follows three
+  things" → "Price follows scope, licence and support"). No service counts anywhere.
+- `stack` gained the `band` diagram (Java ⟷ one contract source ⟷ Go); process steps
+  lost their duplicated `STEP 01` eyebrows; models cards align their CTA rows.
+- Robustness: `scripts.html` bundles `cap-viz.js` under a separate concat target so
+  the content-cached `js/site.js` cannot serve a bundle without it; `main.js` and
+  `cap-viz.js` sweep on scroll so fast scrolling can never leave elements hidden or
+  canvases undrawn.
+- Verified: production build clean; no page errors; no horizontal overflow at
+  1440/1024/768/390; all 12 scenes draw; EN/ZH parity kept; demo reels unchanged.
+- Post-audit fixes after the four-way QA pass (19 routes × 4 widths): `.matrix`
+  scrolls sideways again on phones (v2 `overflow:hidden` was clipping the Go
+  column); hero y labels no longer clip (`hero-viz.js` padRight 52); console
+  floats are hidden at ≤1024 so they stop covering the order book head; the
+  showcase rail fades both edges as it scrolls; reduced motion also covers the
+  hero, console and orbit dots; the violet model badge clears AA (6.44:1); all
+  footer targets are at least 24px tall at 390. Deliberately unchanged: demo
+  autoplay, the 1440 float overlap, and the closed-FAQ "overlap" false positive.
+
 ### 2026-11-10 content refresh
+
+This pass pre-dates the v2 redesign above; its home-page numbers (hero stats, bento
+card counts) were superseded there by the hero chips and the capwall. Kept as the
+record of the copy change:
 
 The platform gained market making, institutional API access and a shared frontend
 platform after the first launch; the site now reflects them without widening the

@@ -27,8 +27,8 @@ ffex covers the full surface a working exchange needs:
   and loss-socialization logic kept isolated from the trading hot path.
 - **Market making tooling, notifications, and a full back-office console** for
   listings, fees, users and finance.
-- **Three frontends** — an admin console, an H5 web trading client, and a
-  mobile app.
+- **Frontends** — an admin console, an H5 web trading client, and a mobile
+  app.
 
 None of this is a thin white-label skin over a template. It is a
 domain-partitioned service platform, and the rest of this blog walks through

@@ -1,0 +1,42 @@
+{{- $b := .b -}}
+<section class="block block--capwall"{{ with $b.id }} id="{{ . }}"{{ end }}>
+  <div class="container">
+    {{ partial "block-head.html" (dict "b" $b) }}
+    <div class="capwall" data-capwall>
+      {{- with $b.filters }}
+      <div class="capwall__bar" data-reveal>
+        <div class="capwall__filters" role="group" aria-label="{{ $b.filterLabel | default "Filter capabilities" }}">
+          {{- range $i, $f := . }}
+          <button class="capwall__filter{{ if eq $i 0 }} is-active{{ end }}" type="button" data-cap-filter="{{ $f.id }}" aria-pressed="{{ if eq $i 0 }}true{{ else }}false{{ end }}">{{ $f.label }}</button>
+          {{- end }}
+        </div>
+        <p class="capwall__hint"><span class="capwall__pulse" aria-hidden="true"></span>{{ $b.hint | default "Live synthetic scenes · illustrative" }}</p>
+      </div>
+      {{- end }}
+      <div class="capwall__grid">
+        {{- range $i, $it := $b.items }}
+        <article class="cap" data-cap-group="{{ $it.group | default "all" }}" data-reveal style="--i:{{ $i }}">
+          <div class="cap__art" aria-hidden="true">
+            <canvas data-cap-scene="{{ $it.scene | default "match" }}" data-seed="{{ add $i 1 }}"></canvas>
+            <span class="cap__scan"></span>
+            <span class="cap__corner cap__corner--tl"></span>
+            <span class="cap__corner cap__corner--br"></span>
+          </div>
+          <div class="cap__body">
+            <div class="cap__top">
+              <span class="cap__tag">{{ $it.tag }}</span>
+              <span class="cap__state">{{ $it.state | default "ONLINE" }}</span>
+            </div>
+            <h3 class="cap__title">{{ $it.title }}</h3>
+            <p class="cap__desc">{{ $it.desc }}</p>
+            {{- with $it.linkLabel }}
+            <a class="cap__link" href="{{ partial "href.html" $it.href }}">{{ . }}<span aria-hidden="true">↗</span></a>
+            {{- end }}
+          </div>
+        </article>
+        {{- end }}
+      </div>
+    </div>
+    {{- with $b.note }}<p class="block-note">{{ . }}</p>{{ end }}
+  </div>
+</section>

@@ -68,6 +68,21 @@
       revealItems.forEach(function (el) {
         revealObserver.observe(el);
       });
+      /* Safety net: fast scrolling can jump an element past the observer's
+         viewport band, leaving it invisible. Reveal anything at or above the
+         fold on every scroll tick. */
+      var revealSweep = function () {
+        for (var i = 0; i < revealItems.length; i++) {
+          var el = revealItems[i];
+          if (!el.classList.contains("is-in") && el.getBoundingClientRect().top < window.innerHeight) {
+            el.classList.add("is-in");
+            revealObserver.unobserve(el);
+          }
+        }
+      };
+      window.addEventListener("scroll", revealSweep, { passive: true });
+      window.addEventListener("resize", revealSweep);
+      revealSweep();
     }
   }
 
@@ -218,6 +233,19 @@
         }
       });
     });
+  }
+
+  /* ---------- showcase rail edge fades ---------- */
+  var stageList = document.querySelector("[data-showcase] .stage__list");
+  if (stageList) {
+    var syncRailEdges = function () {
+      var max = stageList.scrollWidth - stageList.clientWidth;
+      stageList.classList.toggle("is-scrolled", stageList.scrollLeft > 4);
+      stageList.classList.toggle("is-at-end", max > 4 && stageList.scrollLeft >= max - 4);
+    };
+    stageList.addEventListener("scroll", syncRailEdges, { passive: true });
+    window.addEventListener("resize", syncRailEdges);
+    syncRailEdges();
   }
 
   /* ---------- reading progress ---------- */

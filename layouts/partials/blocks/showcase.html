@@ -2,27 +2,44 @@
 <section class="block block--showcase"{{ with $b.id }} id="{{ . }}"{{ end }}>
   <div class="container">
     {{ partial "block-head.html" (dict "b" $b) }}
-    <div class="showcase" data-showcase>
-      <div class="showcase__tabs" role="tablist" aria-label="Demo previews">
-        {{- range $i, $it := $b.items }}
-        {{- $id := $it.id | default (printf "demo-%d" $i) }}
-        <button class="showcase__tab{{ if eq $i 0 }} is-active{{ end }}" type="button" role="tab" id="tab-{{ $id }}" aria-controls="panel-{{ $id }}" aria-selected="{{ if eq $i 0 }}true{{ else }}false{{ end }}" tabindex="{{ if eq $i 0 }}0{{ else }}-1{{ end }}" data-showcase-tab="{{ $i }}">
-          <span class="showcase__tab-num">{{ printf "%02d" (add $i 1) }}</span>
-          <span class="showcase__tab-label">{{ $it.tab | default $it.title }}</span>
-        </button>
-        {{- end }}
+    <div class="stage" data-showcase>
+      <div class="stage__rail" data-reveal>
+        <p class="stage__rail-head">{{ $b.railLabel | default "Interface previews" }}</p>
+        <ol class="stage__list" role="tablist" aria-label="{{ $b.railLabel | default "Interface previews" }}">
+          {{- range $i, $it := $b.items }}
+          {{- $id := $it.id | default (printf "demo-%d" $i) }}
+          <li>
+            <button class="stage__item{{ if eq $i 0 }} is-active{{ end }}" type="button" role="tab" id="tab-{{ $id }}" aria-controls="panel-{{ $id }}" aria-selected="{{ if eq $i 0 }}true{{ else }}false{{ end }}" tabindex="{{ if eq $i 0 }}0{{ else }}-1{{ end }}" data-showcase-tab="{{ $i }}">
+              <span class="stage__num">{{ printf "%02d" (add $i 1) }}</span>
+              <span class="stage__item-body">
+                <span class="stage__item-tag">{{ $it.tag | default "PREVIEW" }}</span>
+                <span class="stage__item-title">{{ $it.tab | default $it.title }}</span>
+              </span>
+              <span class="stage__item-mark" aria-hidden="true">↗</span>
+              <span class="stage__item-bar" aria-hidden="true"></span>
+            </button>
+          </li>
+          {{- end }}
+        </ol>
+        {{- with $b.hint }}<p class="stage__hint">{{ . }}</p>{{ end }}
       </div>
 
-      <div class="showcase__stage">
+      <div class="stage__main">
         {{- range $i, $it := $b.items }}
         {{- $id := $it.id | default (printf "demo-%d" $i) }}
         <div class="showcase__panel{{ if eq $i 0 }} is-active{{ end }}" role="tabpanel" id="panel-{{ $id }}" aria-labelledby="tab-{{ $id }}" data-showcase-panel="{{ $i }}"{{ if ne $i 0 }} hidden{{ end }}>
           <figure class="demo">
             <div class="demo__frame">
+              <div class="stage__chrome" aria-hidden="true">
+                <span class="stage__dots"><span></span><span></span><span></span></span>
+                <span class="stage__chrome-label">{{ $it.chrome | default "ffex · generated demo" }}</span>
+                <span class="stage__chrome-live">{{ i18n "demo_badge" }}</span>
+              </div>
               <video class="demo__video" data-demo-video muted loop playsinline preload="none" poster="{{ $it.poster | relURL }}" aria-label="{{ $it.title }}">
                 {{- with $it.video }}<source src="{{ . | relURL }}" type="video/webm">{{ end }}
                 {{- with $it.mp4 }}<source src="{{ . | relURL }}" type="video/mp4">{{ end }}
               </video>
+              {{- with $it.chip }}<span class="demo__chip">{{ . }}</span>{{ end }}
               <button class="demo__toggle" type="button" data-video-toggle aria-label="{{ i18n "video_pause" }}">
                 <span class="demo__toggle-icon demo__toggle-icon--pause">{{ partial "icon.html" "pause" }}</span>
                 <span class="demo__toggle-icon demo__toggle-icon--play">{{ partial "icon.html" "play" }}</span>

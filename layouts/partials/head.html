@@ -23,7 +23,7 @@
 {{- if or (eq .Kind "taxonomy") (eq .Kind "term") }}
 <meta name="robots" content="noindex, follow">
 {{- end }}
-<meta name="theme-color" content="#04050b">
+<meta name="theme-color" content="#05060c">
 <meta name="color-scheme" content="dark">
 <script>document.documentElement.classList.add("js");</script>
 <meta property="og:site_name" content="ffex">
@@ -56,6 +56,7 @@
   (resources.Get "css/base.css")
   (resources.Get "css/blocks.css")
   (resources.Get "css/pages.css")
+  (resources.Get "css/v2.css")
 -}}
 {{- $css := $cssFiles | resources.Concat "css/site.css" | minify | fingerprint -}}
 <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
