@@ -14,7 +14,7 @@ blocks:
       - { label: "获取源码与方案", href: "cooperation/", style: "ghost" }
     stats:
       - { value: "02", label: "套 CEX 实现" }
-      - { value: "181", label: "个独立组件" }
+      - { value: "03", label: "套前端" }
       - { value: "01", label: "份契约源" }
       - { value: "E2E", label: "全链路追踪" }
     footnote: "界面为演示示意，非实时行情数据。"

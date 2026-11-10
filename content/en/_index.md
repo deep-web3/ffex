@@ -14,7 +14,7 @@ blocks:
       - { label: "Get source & terms", href: "cooperation/", style: "ghost" }
     stats:
       - { value: "02", label: "CEX stacks" }
-      - { value: "181", label: "Versioned components" }
+      - { value: "03", label: "Frontends" }
       - { value: "01", label: "Contract source" }
       - { value: "E2E", label: "Full-link trace" }
     footnote: "Interface shown is an illustrative demo. No live market data."

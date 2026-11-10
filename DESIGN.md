@@ -308,7 +308,8 @@ production claims:
   trace coverage renumbered to `05`.
 - Surfaces: four surfaces kept, lede now states the shared design system; the
   common platform list gained `FRONTEND` (design system, typed clients, native UI).
-- Home: stat `03 Frontends` → `181 Versioned components`; marquee expanded to 16
+- Home: hero stats unchanged (`02 stacks`, `01 contract source`, `03 frontends`,
+  `E2E trace`); marquee expanded to 16
   items; capability grid 8 → 10 cards (six normal, four wide — four complete rows);
   common list gained the frontend platform.
 - Dual stack: building blocks 8 → 9 (added `QUALITY / TEST`), fifth principle on
