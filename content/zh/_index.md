@@ -1,26 +1,26 @@
 ---
 title: "ffex — 交易所平台工程"
-description: "一套完整的数字资产交易所平台，以 Java 与 Go 两套实现构建于同一份契约优先蓝图之上——交易、托管、风控、行情、前端与全链路可观测，以可真正拥有的源码交付。"
+description: "一套完整的数字资产交易所平台，以 Java 与 Go 两套实现构建于同一份契约优先蓝图之上——交易、做市、托管、风控、行情、机构 API、前端与全链路可观测，以可真正拥有的源码交付。"
 translationKey: "home"
 blocks:
   - type: hero
     variant: home
     kicker: "双栈交易所引擎 · JAVA × GO"
     title: "一套你可以<em>真正拥有</em>的交易所。"
-    lede: "Java 与 Go 两套生产级实现，构建于同一份契约优先蓝图之上。交易、托管、风控、行情、前端与全链路可观测，以可编译、可部署、可扩展的源码交付。"
+    lede: "Java 与 Go 两套完整实现，构建于同一份契约优先蓝图之上。交易、做市、托管、风控、行情、机构 API、前端与全链路可观测，以可编译、可部署、可扩展的源码交付。"
     media: console
     actions:
       - { label: "探索平台能力", href: "capabilities/", style: "primary" }
       - { label: "获取源码与方案", href: "cooperation/", style: "ghost" }
     stats:
       - { value: "02", label: "套 CEX 实现" }
+      - { value: "181", label: "个独立组件" }
       - { value: "01", label: "份契约源" }
-      - { value: "03", label: "套前端" }
       - { value: "E2E", label: "全链路追踪" }
     footnote: "界面为演示示意，非实时行情数据。"
 
   - type: marquee
-    items: ["现货", "永续合约", "期权", "OTC", "钱包托管", "风控清算", "清算结算", "行情数据", "后台运营", "通知平台", "全链路追踪", "KUBERNETES"]
+    items: ["现货", "永续合约", "期权", "OTC", "做市", "钱包托管", "风控清算", "清算结算", "行情数据", "开放 API", "后台运营", "通知平台", "设计系统", "托管集成", "全链路追踪", "KUBERNETES"]
 
   - type: bento
     id: capabilities
@@ -86,6 +86,22 @@ blocks:
         span: "wide"
         href: "capabilities/"
         linkLabel: "公共能力"
+      - tag: "09 / 流动性"
+        title: "做市与流动性"
+        desc: "面向新上线交易对的做市运行器与报价模型，让市场开出来就有可用深度，而不是一本空盘口。"
+        icon: "bolt"
+        accent: "lime"
+        span: "wide"
+        href: "capabilities/"
+        linkLabel: "流动性业务"
+      - tag: "10 / API 接入"
+        title: "机构 API 接入"
+        desc: "有签名的 REST 与 WebSocket 接入：按 key 管理凭据、防重放，并为算法客户提供独立流量策略。"
+        icon: "code"
+        accent: "violet"
+        span: "wide"
+        href: "capabilities/"
+        linkLabel: "API 计划"
 
   - type: showcase
     id: demos
@@ -257,6 +273,12 @@ blocks:
         icon: "lock"
         accent: "cyan"
         bullets: ["TOTP 多因素", "RBAC", "不可篡改审计"]
+      - tag: "FRONTEND"
+        title: "前端平台"
+        desc: "所有界面共用一套设计语言：设计 token、类型化 API 与实时客户端，以及移动壳的原生 UI 组件。"
+        icon: "sparkles"
+        accent: "violet"
+        bullets: ["设计系统与 token", "类型化 API／实时客户端", "原生 UI 组件"]
       - tag: "DELIVERY"
         title: "发布与部署"
         desc: "Kubernetes 清单、流水线门禁、runbook 与回滚路径，覆盖每个服务。"

@@ -292,3 +292,26 @@ Shipped in this repository:
   0 violations across EN/ZH pages; HTML nesting valid; no horizontal overflow at
   1440/1280/1100/768/390; reduced-motion and no-JS fallbacks checked; demo videos
   verified at 1440×900 / 30 fps / 14.00 s with a seamless loop.
+
+### 2026-11-10 content refresh
+
+The platform gained market making, institutional API access and a shared frontend
+platform after the first launch; the site now reflects them without widening the
+production claims:
+
+- Capability map: 10 → 12 domains (added `MARKET MAKING`, `API PROGRAM`), all
+  cards `span: normal` to tile a clean 4 × 3 grid. Options copy stays at
+  specification, order and position tracking — settlement payout rules are still
+  gated, so they are not claimed.
+- New `04 / VERIFIABLE DELIVERY` principles block (fault injection, replay and
+  golden fixtures, containerized dependencies, simulated network faults);
+  trace coverage renumbered to `05`.
+- Surfaces: four surfaces kept, lede now states the shared design system; the
+  common platform list gained `FRONTEND` (design system, typed clients, native UI).
+- Home: stat `03 Frontends` → `181 Versioned components`; marquee expanded to 16
+  items; capability grid 8 → 10 cards (six normal, four wide — four complete rows);
+  common list gained the frontend platform.
+- Dual stack: building blocks 8 → 9 (added `QUALITY / TEST`), fifth principle on
+  failure drills, matrix rows for frontend platform and programmatic access.
+- Custody integration adapters and the notification platform remain described as
+  capabilities, not as accepted production deliveries.

@@ -48,6 +48,7 @@ blocks:
         - "相同的业务域地图、账本不变量与失败语义"
         - "对外 HTTP 与 WebSocket API 在两条栈上保持一致"
         - "前端通过同一套 API 接入任一技术栈"
+        - "每个界面背后都是同一套设计系统、Web 平台与原生 UI 组件"
     matrix:
       columns: ["维度", "Java", "Go"]
       rows:
@@ -62,7 +63,11 @@ blocks:
         - label: "生态"
           values: ["JVM 工具与集成最广", "标准库优先，工具链强，静态构建"]
         - label: "前端"
-          values: ["后台、H5 与 App，走 HTTP/WS", "同一套前端，同一套 API"]
+          values: ["后台、交易 Web、H5 与原生 App", "后台、H5 与原生 App 壳"]
+        - label: "前端平台"
+          values: ["共享设计系统与静态资源流水线", "设计系统、Web 平台与原生 UI"]
+        - label: "程序化接入"
+          values: ["有签名的 REST 与 WebSocket API", "有签名的 REST 与 WebSocket API"]
         - label: "部署"
           values: ["容器化运行于 Kubernetes，按服务流水线", "容器化运行于 Kubernetes，镜像更小"]
         - label: "可观测性"
@@ -76,7 +81,7 @@ blocks:
 
   - type: bento
     kicker: "02 / 架构组成"
-    title: "八个组成部件，<br>共享同一套<em>职责边界</em>。"
+    title: "九个组成部件，<br>共享同一套<em>职责边界</em>。"
     lede: "无论选择哪套栈，平台都由同样的职责边界组成，并且每个部件对自己的数据只有一个 owner。"
     items:
       - tag: "入口 / API"
@@ -127,6 +132,12 @@ blocks:
         icon: "server"
         accent: "lime"
         span: "normal"
+      - tag: "质量 / 测试"
+        title: "质量与测试链路"
+        desc: "确定性夹具、故障与网络注入、事件回放与容器化依赖——每个业务域都要在这套链路上通过验收。"
+        icon: "code"
+        accent: "cyan"
+        span: "normal"
 
   - type: principles
     kicker: "03 / 工程原则"
@@ -145,6 +156,9 @@ blocks:
       - index: "04"
         title: "两套栈，一条验收线"
         desc: "测试、故障演练与验收标准写在蓝图里。一套栈通过的行为，另一套栈也必须通过。"
+      - index: "05"
+        title: "失败演练随功能一起交付"
+        desc: "每个业务域都有一条被真正跑过的失败路径——超时、分区、UNKNOWN 结果——在发布前验收，而不是等生产环境暴露。"
 
   - type: cta
     kicker: "下一步"

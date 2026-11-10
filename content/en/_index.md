@@ -1,26 +1,26 @@
 ---
 title: "ffex — Exchange platform engineering"
-description: "A complete digital-asset exchange platform implemented twice — Java and Go — on one contract-first blueprint. Trading, custody, risk, market data, frontends and full-link observability, delivered as source you can own."
+description: "A complete digital-asset exchange platform implemented twice — Java and Go — on one contract-first blueprint. Trading, market making, custody, risk, market data, institutional APIs, frontends and full-link observability, delivered as source you can own."
 translationKey: "home"
 blocks:
   - type: hero
     variant: home
     kicker: "DUAL-STACK EXCHANGE ENGINE · JAVA × GO"
     title: "The exchange platform you can <em>own</em>."
-    lede: "Two production implementations of a complete digital-asset exchange, built on one contract-first blueprint. Trading, custody, risk, market data, frontends and full-link observability — delivered as source you can build, deploy and extend."
+    lede: "Two complete implementations of a digital-asset exchange, built on one contract-first blueprint. Trading, market making, custody, risk, market data, institutional APIs, frontends and full-link observability — delivered as source you can build, deploy and extend."
     media: console
     actions:
       - { label: "Explore capabilities", href: "capabilities/", style: "primary" }
       - { label: "Get source & terms", href: "cooperation/", style: "ghost" }
     stats:
       - { value: "02", label: "CEX stacks" }
+      - { value: "181", label: "Versioned components" }
       - { value: "01", label: "Contract source" }
-      - { value: "03", label: "Frontends" }
       - { value: "E2E", label: "Full-link trace" }
     footnote: "Interface shown is an illustrative demo. No live market data."
 
   - type: marquee
-    items: ["SPOT", "PERPETUALS", "OPTIONS", "OTC", "WALLET & CUSTODY", "RISK & LIQUIDATION", "CLEARING", "MARKET DATA", "ADMIN & OPS", "NOTIFICATION", "FULL-LINK TRACE", "KUBERNETES"]
+    items: ["SPOT", "PERPETUALS", "OPTIONS", "OTC", "MARKET MAKING", "WALLET & CUSTODY", "RISK & LIQUIDATION", "CLEARING", "MARKET DATA", "OPEN API", "ADMIN & OPS", "NOTIFICATION", "DESIGN SYSTEM", "CUSTODY INTEGRATIONS", "FULL-LINK TRACE", "KUBERNETES"]
 
   - type: bento
     id: capabilities
@@ -86,6 +86,22 @@ blocks:
         span: "wide"
         href: "capabilities/"
         linkLabel: "Common capabilities"
+      - tag: "09 / LIQUIDITY"
+        title: "Market making & liquidity"
+        desc: "A market-making runner and quoting model for new listings, so a market opens with usable depth instead of an empty book."
+        icon: "bolt"
+        accent: "lime"
+        span: "wide"
+        href: "capabilities/"
+        linkLabel: "Liquidity domain"
+      - tag: "10 / API ACCESS"
+        title: "Institutional API access"
+        desc: "Signed REST and WebSocket access with per-key credentials, replay protection and an independent traffic policy for algorithmic clients."
+        icon: "code"
+        accent: "violet"
+        span: "wide"
+        href: "capabilities/"
+        linkLabel: "API program"
 
   - type: showcase
     id: demos
@@ -257,6 +273,12 @@ blocks:
         icon: "lock"
         accent: "cyan"
         bullets: ["TOTP MFA", "RBAC", "Immutable audit"]
+      - tag: "FRONTEND"
+        title: "Frontend platform"
+        desc: "One design language behind every surface: design tokens, typed API and realtime clients, and a native UI kit for the mobile shell."
+        icon: "sparkles"
+        accent: "violet"
+        bullets: ["Design system & tokens", "Typed API/realtime clients", "Native UI kit"]
       - tag: "DELIVERY"
         title: "Release & deployment"
         desc: "Kubernetes manifests, pipeline-gated releases, runbooks and rollback paths for every service."

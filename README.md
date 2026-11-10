@@ -1,9 +1,11 @@
 # ffex — exchange platform site
 
 Buyer-facing site for the **ffex** digital-asset exchange platform. It presents
-the two CEX implementations (Java and Go), the business and common capabilities,
-full-link observability, and the ways to acquire the platform — source-code
-licensing, direct delivery, joint build, custom modules and long-term support.
+the two CEX implementations (Java and Go), the business domains and common
+platform (spot, derivatives, options, OTC, market making, custody, risk, market
+data, programmatic access), full-link observability, and the ways to acquire the
+platform — source-code licensing, direct delivery, joint build, custom modules
+and long-term support.
 
 English is served at `/`, Chinese at `/zh/`. Built with a custom Hugo theme and
 deployed to **GitHub Pages** by GitHub Actions on every push to `main`.

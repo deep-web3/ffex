@@ -48,6 +48,7 @@ blocks:
         - "The same domain map, ledger invariants and failure semantics"
         - "External HTTP and WebSocket APIs stay stable across stacks"
         - "Frontends talk to either stack through the same API surface"
+        - "Design system, web platform and native UI kit behind every screen"
     matrix:
       columns: ["Dimension", "Java", "Go"]
       rows:
@@ -62,7 +63,11 @@ blocks:
         - label: "Ecosystem"
           values: ["Broad JVM tooling and integrations", "Standard library, strong tooling, static builds"]
         - label: "Frontends"
-          values: ["Admin Web, H5 and native app over HTTP/WS", "Same frontends, same API surface"]
+          values: ["Admin Web, trading web, H5 and native app", "Admin Web, H5 and native app shell"]
+        - label: "Frontend platform"
+          values: ["Shared design system and asset pipeline", "Design system, web platform and native UI"]
+        - label: "Programmatic access"
+          values: ["Signed REST and WebSocket APIs", "Signed REST and WebSocket APIs"]
         - label: "Deployment"
           values: ["Containers on Kubernetes, per-service pipelines", "Containers on Kubernetes, smaller images"]
         - label: "Observability"
@@ -76,7 +81,7 @@ blocks:
 
   - type: bento
     kicker: "02 / ARCHITECTURE"
-    title: "Eight building blocks,<br>shared <em>responsibilities</em>."
+    title: "Nine building blocks,<br>shared <em>responsibilities</em>."
     lede: "Whichever stack you choose, the platform is assembled from the same boundaries of responsibility — and each block has one owner of its data."
     items:
       - tag: "EDGE / API"
@@ -127,6 +132,12 @@ blocks:
         icon: "server"
         accent: "lime"
         span: "normal"
+      - tag: "QUALITY / TEST"
+        title: "Quality & test harness"
+        desc: "Deterministic fixtures, fault and network injection, event replay and containerized dependencies — the harness every domain is accepted against."
+        icon: "code"
+        accent: "cyan"
+        span: "normal"
 
   - type: principles
     kicker: "03 / ENGINEERING PRINCIPLES"
@@ -145,6 +156,9 @@ blocks:
       - index: "04"
         title: "One acceptance bar for both stacks"
         desc: "Tests, failure-mode drills and acceptance criteria live in the blueprint. A behaviour that passes in one stack has to pass in the other."
+      - index: "05"
+        title: "Failure drills ship with the feature"
+        desc: "Every domain has an exercised failure path — timeouts, partitions, UNKNOWN outcomes — accepted before release rather than discovered in production."
 
   - type: cta
     kicker: "NEXT STEP"

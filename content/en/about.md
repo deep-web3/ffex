@@ -47,7 +47,7 @@ blocks:
     note: "We answer in English and Chinese. Operating an exchange requires the operator's own licences, compliance programme and risk controls."
 ---
 
-**ffex** is a complete digital-asset exchange platform: spot, perpetual futures, options and OTC trading; wallet custody; risk and clearing; market data; notifications; back-office; and the admin, H5 and mobile frontends.
+**ffex** is a complete digital-asset exchange platform: spot, perpetual futures, options and OTC trading; market making; wallet and custody; risk and clearing; market data; programmatic access; notifications; back-office; and the design system behind the admin, H5 and mobile frontends.
 
 It is implemented twice — in Java and in Go — from one contract-first blueprint. Same business surface, same invariants, same observability model, in two runtimes. Operators pick the stack their team can build, hire for and operate.
 
