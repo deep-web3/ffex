@@ -9,7 +9,7 @@
   width: 0;
   height: 2px;
   background: var(--grad);
-  box-shadow: 0 0 12px rgba(46, 230, 197, 0.5);
+  box-shadow: 0 0 12px rgba(252,213,53, 0.5);
   transition: width 0.1s linear;
 }
 
@@ -169,7 +169,7 @@
 }
 .article__body a {
   color: var(--ink);
-  text-decoration-color: rgba(46, 230, 197, 0.5);
+  text-decoration-color: rgba(252,213,53, 0.5);
   text-underline-offset: 3px;
 }
 .article__body a:hover {
@@ -186,7 +186,7 @@
   margin: 30px 0;
   padding: 18px 22px;
   border-left: 2px solid var(--cyan);
-  background: rgba(46, 230, 197, 0.05);
+  background: rgba(252,213,53, 0.05);
 }
 .article__body blockquote p {
   color: var(--ink-2);
@@ -204,7 +204,7 @@
   padding: 18px;
   border: 1px solid var(--line);
   border-radius: var(--radius-sm);
-  background: #070a12;
+  background: #12161c;
   overflow-x: auto;
 }
 .article__body pre code {
@@ -260,8 +260,8 @@
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   background:
-    radial-gradient(ellipse at 10% 0%, rgba(139, 108, 255, 0.18), transparent 58%),
-    rgba(9, 12, 21, 0.7);
+    radial-gradient(ellipse at 10% 0%, rgba(240,185,11, 0.18), transparent 58%),
+    rgba(24,26,32, 0.7);
 }
 .article__cta .eyebrow {
   margin-bottom: 10px;

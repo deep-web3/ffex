@@ -13,9 +13,9 @@
   function wave(t, k, ph) { return Math.sin(TAU * (k * t / D + ph)); }
 
   var CH = {
-    EMAIL: { cls: "email", color: "#8b6cff", icon: '<svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="2" y="3.5" width="12" height="9" rx="2"/><path d="M2.5 5l5.5 4 5.5-4"/></svg>' },
-    SMS: { cls: "sms", color: "#2ee6c5", icon: '<svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 3.5h10v7H8l-3 2.5v-2.5H3z"/></svg>' },
-    FEISHU: { cls: "feishu", color: "#c8ff62", icon: '<svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 12.5L13.5 2.5M6 2.5l7.5 1v7.5M2.5 8l5.5 5.5"/></svg>' }
+    EMAIL: { cls: "email", color: "#f0b90b", icon: '<svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="2" y="3.5" width="12" height="9" rx="2"/><path d="M2.5 5l5.5 4 5.5-4"/></svg>' },
+    SMS: { cls: "sms", color: "#fcd535", icon: '<svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 3.5h10v7H8l-3 2.5v-2.5H3z"/></svg>' },
+    FEISHU: { cls: "feishu", color: "#0ecb81", icon: '<svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 12.5L13.5 2.5M6 2.5l7.5 1v7.5M2.5 8l5.5 5.5"/></svg>' }
   };
   var CH_LIST = ["EMAIL", "SMS", "FEISHU"];
 
@@ -151,7 +151,7 @@
     '          <div><div class="caps" style="margin-bottom:7px">BY STATE</div>' + aggRowsHtml + '<div class="agg-stack" id="aggStack"></div></div>',
     '          <div><div class="caps" style="margin-bottom:7px">BY CHANNEL</div>' + chRowsHtml + '<div style="margin-top:10px" class="pl" id="aggTotal"></div></div>',
     '        </div>',
-    '        <div class="agg-legend"><span class="al"><i style="background:#c8ff62"></i>DELIVERED</span><span class="al"><i style="background:#2ee6c5"></i>PENDING</span><span class="al"><i style="background:#ffb45c"></i>RETRY</span><span class="al"><i style="background:#ff6f91"></i>UNKNOWN</span><span class="al" style="margin-left:auto;color:var(--faint)">RECEIPTS ARCHIVED · IMMUTABLE</span></div>',
+    '        <div class="agg-legend"><span class="al"><i style="background:#0ecb81"></i>DELIVERED</span><span class="al"><i style="background:#fcd535"></i>PENDING</span><span class="al"><i style="background:#f0b90b"></i>RETRY</span><span class="al"><i style="background:#f6465d"></i>UNKNOWN</span><span class="al" style="margin-left:auto;color:var(--faint)">RECEIPTS ARCHIVED · IMMUTABLE</span></div>',
     '      </div></div>',
     '    </div>',
     /* delivery events */
@@ -188,7 +188,7 @@
 
     /* ---- message in ---- */
     var flash = Math.max(0, 1 - local / 0.5);
-    $("msgCard").style.boxShadow = "0 0 " + (26 + 34 * flash).toFixed(1) + "px rgba(139,108,255," + (0.1 + 0.25 * flash).toFixed(3) + ")";
+    $("msgCard").style.boxShadow = "0 0 " + (26 + 34 * flash).toFixed(1) + "px rgba(240,185,11," + (0.1 + 0.25 * flash).toFixed(3) + ")";
     $("msgBadge").className = "ch-badge " + chd.cls;
     $("msgBadge").innerHTML = chd.icon;
     Demo.setText($("msgTitle"), msg.ch + " · WITHDRAWAL RECEIPT");
@@ -271,7 +271,7 @@
       Demo.setHTML(routeState[r], stateChip(st, cls));
       var pktEl = pkt[r];
       pktEl.style.top = "12px";
-      if (st === "RETRY" || st === "UNKNOWN") pktEl.style.background = "radial-gradient(circle at 35% 35%, #fff, #ffb45c 55%, #ffb45c55)";
+      if (st === "RETRY" || st === "UNKNOWN") pktEl.style.background = "radial-gradient(circle at 35% 35%, #fff, #f0b90b 55%, #f0b90b55)";
     }
 
     /* ---- receipt aggregation ---- */
@@ -289,9 +289,9 @@
     }
     var stack = $("aggStack");
     if (stack.children.length !== 4) {
-      stack.innerHTML = '<i style="background:#c8ff62"></i><i style="background:#2ee6c5"></i><i style="background:#ffb45c"></i><i style="background:#ff6f91"></i>';
+      stack.innerHTML = '<i style="background:#0ecb81"></i><i style="background:#fcd535"></i><i style="background:#f0b90b"></i><i style="background:#f6465d"></i>';
     }
-    var colors = ["#c8ff62", "#2ee6c5", "#ffb45c", "#ff6f91"];
+    var colors = ["#0ecb81", "#fcd535", "#f0b90b", "#f6465d"];
     for (var s = 0; s < 4; s++) {
       stack.children[s].style.width = (agg[s] / total * 100).toFixed(2) + "%";
       stack.children[s].style.background = colors[s];

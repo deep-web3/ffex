@@ -20,13 +20,15 @@
   var ctx = canvas.getContext("2d");
   var css = getComputedStyle(document.documentElement);
   var COLORS = {
-    cyan: css.getPropertyValue("--cyan").trim() || "#2ee6c5",
-    rose: css.getPropertyValue("--rose").trim() || "#ff6f91",
-    violet: css.getPropertyValue("--violet").trim() || "#8b6cff",
-    amber: css.getPropertyValue("--amber").trim() || "#ffb45c",
-    lime: css.getPropertyValue("--lime").trim() || "#c8ff62",
-    faint: css.getPropertyValue("--faint").trim() || "#7b83a6",
-    grid: "rgba(158,168,212,0.08)"
+    cyan: css.getPropertyValue("--cyan").trim() || "#fcd535",
+    up: css.getPropertyValue("--up").trim() || "#0ecb81",
+    down: css.getPropertyValue("--down").trim() || "#f6465d",
+    rose: css.getPropertyValue("--rose").trim() || "#f6465d",
+    violet: css.getPropertyValue("--violet").trim() || "#f0b90b",
+    amber: css.getPropertyValue("--amber").trim() || "#f0b90b",
+    lime: css.getPropertyValue("--lime").trim() || "#0ecb81",
+    faint: css.getPropertyValue("--faint").trim() || "#5e6673",
+    grid: "rgba(132,142,156,0.08)"
   };
 
   var basePrice = 68420.5;
@@ -133,7 +135,7 @@
     // volume
     var step = chartW / candles.length;
     var bodyW = Math.max(step * 0.52, 1.5);
-    ctx.fillStyle = "rgba(158,168,212,0.15)";
+    ctx.fillStyle = "rgba(132,142,156,0.15)";
     for (var i = 0; i < candles.length; i += 1) {
       var vol = 3 + Math.abs(candles[i].c - candles[i].o) * 0.12 + (i % 5);
       var vh = Math.min(vol, padBottom - 4);
@@ -145,7 +147,7 @@
       var cd = candles[k];
       var x = k * step + step / 2;
       var up = cd.c >= cd.o;
-      var color = up ? COLORS.cyan : COLORS.rose;
+      var color = up ? COLORS.up : COLORS.down;
       ctx.strokeStyle = color;
       ctx.globalAlpha = 0.55;
       ctx.beginPath();
@@ -181,7 +183,7 @@
     // live price
     var lastX = chartW;
     var lastY = y(price);
-    ctx.strokeStyle = "rgba(46,230,197,0.4)";
+    ctx.strokeStyle = "rgba(14,203,129,0.4)";
     ctx.setLineDash([3, 4]);
     ctx.beginPath();
     ctx.moveTo(0, lastY);
@@ -190,11 +192,11 @@
     ctx.setLineDash([]);
 
     var pulse = reduceMotion ? 0 : (Math.sin(now / 420) + 1) / 2;
-    ctx.fillStyle = "rgba(46,230,197," + (0.28 + pulse * 0.4) + ")";
+    ctx.fillStyle = "rgba(14,203,129," + (0.28 + pulse * 0.4) + ")";
     ctx.beginPath();
     ctx.arc(lastX - 2, lastY, 5 + pulse * 3, 0, Math.PI * 2);
     ctx.fill();
-    ctx.fillStyle = COLORS.cyan;
+    ctx.fillStyle = COLORS.up;
     ctx.beginPath();
     ctx.arc(lastX - 2, lastY, 2.4, 0, Math.PI * 2);
     ctx.fill();

@@ -243,13 +243,18 @@ static/og/ffex-og-zh.png        1200×630
 
 Web3-native, dark-first, premium infrastructure aesthetic. Not a generic SaaS page.
 
-- Background `#05060c` with layered aurora radial gradients, 1px grid (masked),
-  fine noise, one slow light beam and a faint orbit ring; panels are glass
-  (`rgba(11,15,26,.72)` + 1px hairline + inner highlight).
-- Accents: violet `#8168ff`, cyan `#2ff0c8`, lime `#d2ff62`, amber `#ffb45c`,
-  rose `#ff6f91`. Brand gradient: violet → cyan → lime (used for highlight words,
-  marks, 1px borders, small glows; never as large flat fills). The v2 layer
-  (`assets/css/v2.css`, loaded after `pages.css`) carries these overrides.
+- Binance-inspired palette (2026-11-11): background `#0b0e11`, raised surfaces
+  `#181a20` / `#1e2329`, hairlines `#2b3139`, ink `#eaecef`, secondary `#848e9c`.
+  Layered yellow aurora radial gradients stay subtle; the 1px grid, noise, beam and
+  orbit ring remain. Panels are glass (`rgba(24,26,32,.72)` + hairline + highlight).
+- Accents: brand yellow `#f0b90b`, bright yellow `#fcd535`, highlight `#ffe58f`;
+  market semantics up `#0ecb81`, down `#f6465d`. Brand gradient: brand → bright →
+  highlight yellow (used for highlight words, marks, 1px borders, small glows; never
+  as large flat fills). Primary buttons are bright yellow `#fcd535` with `#181a20`
+  text. Legacy token names (`--violet`, `--cyan`, `--lime`, `--amber`, `--rose`) are
+  kept so every rule keeps resolving: violet/amber = brand, cyan = bright, lime =
+  up, rose = down. The v2 layer (`assets/css/v2.css`, loaded after `pages.css`)
+  carries these overrides.
 - Type: **Space Grotesk** (display, tight tracking, 300–700), **Inter** (body),
   **JetBrains Mono** (labels, data, numerals; uppercase letterspaced 0.14em).
   Self-hosted woff2 in `static/fonts/`; CJK falls back to system (`PingFang SC`,
@@ -353,6 +358,27 @@ Shipped in this repository:
   0 violations across EN/ZH pages; HTML nesting valid; no horizontal overflow at
   1440/1280/1100/768/390; reduced-motion and no-JS fallbacks checked; demo videos
   verified at 1440×900 / 30 fps / 14.00 s with a seamless loop.
+
+### 2026-11-11 Binance-inspired palette
+
+Colour-only pass, requested as "same colours as Binance"; structure, copy and blocks
+are unchanged:
+
+- Tokens repainted to the Binance dark scheme: page `#0b0e11`, panels `#181a20` /
+  `#1e2329`, hairlines `#2b3139`, ink `#eaecef`, muted `#848e9c`, brand `#f0b90b`,
+  bright `#fcd535`, up `#0ecb81`, down `#f6465d`. `--brand`, `--brand-bright`,
+  `--up`, `--down` were added; legacy accent names were kept and remapped
+  (violet/amber → brand, cyan → bright, lime → up, rose → down).
+- Every hard-coded colour in `tokens.css`, `base.css`, `blocks.css`, `pages.css`,
+  `v2.css`, `hero-viz.js` and `cap-viz.js` was migrated, so subpages inherit the
+  palette consistently. The hero chart and order book now use green up / red down
+  (`--up` / `--down`); the rest of the chrome is yellow.
+- Brand mark `static/brand/ffex-mark.svg`, `static/favicon.svg`, primary buttons and
+  the demo-lab scenes/OG sources (`demo-src/`) were repainted in the same pass.
+  `static/demo/*` reels and `static/og/*.png` were re-rendered with
+  `node demo-src/render.mjs --all`; posters, webm/mp4 and both social cards match.
+- Verified: production build clean; home, capwall and subpages screenshot-checked at
+  1440 and 390; no page errors, no overflow, 0 broken internal links.
 
 ### 2026-11-10 v2 redesign (Web3 buyer-facing)
 

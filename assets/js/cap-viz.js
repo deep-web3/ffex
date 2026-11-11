@@ -14,20 +14,22 @@
     return v || fallback;
   }
   var C = {
-    violet: token("--violet", "#8168ff"),
-    cyan: token("--cyan", "#2ff0c8"),
-    lime: token("--lime", "#d2ff62"),
-    amber: token("--amber", "#ffbe6b"),
-    rose: token("--rose", "#ff7d9c"),
-    ink: token("--ink-2", "#ccd2ea"),
-    faint: token("--faint", "#7b83a6"),
-    line: "rgba(158,168,212,0.16)",
-    lineSoft: "rgba(158,168,212,0.08)",
+    violet: token("--violet", "#f0b90b"),
+    cyan: token("--cyan", "#fcd535"),
+    lime: token("--lime", "#0ecb81"),
+    amber: token("--amber", "#f0b90b"),
+    rose: token("--rose", "#f6465d"),
+    up: token("--up", "#0ecb81"),
+    down: token("--down", "#f6465d"),
+    ink: token("--ink-2", "#d3d8de"),
+    faint: token("--faint", "#5e6673"),
+    line: "rgba(132,142,156,0.16)",
+    lineSoft: "rgba(132,142,156,0.08)",
     panel: "rgba(255,255,255,0.035)"
   };
-  if (C.violet.charAt(0) !== "#") C.violet = "#8168ff";
-  if (C.cyan.charAt(0) !== "#") C.cyan = "#2ff0c8";
-  if (C.lime.charAt(0) !== "#") C.lime = "#d2ff62";
+  if (C.violet.charAt(0) !== "#") C.violet = "#f0b90b";
+  if (C.cyan.charAt(0) !== "#") C.cyan = "#fcd535";
+  if (C.lime.charAt(0) !== "#") C.lime = "#0ecb81";
 
   function rgba(hex, a) {
     var h = hex.replace("#", "");
@@ -100,11 +102,11 @@
       var y = top + i * rowH;
       ctx.fillStyle = rgba(C.rose, 0.14);
       ctx.fillRect(cx + 8, y, wAsk, rowH * 0.62);
-      ctx.fillStyle = rgba(C.cyan, 0.14);
+      ctx.fillStyle = rgba(C.up, 0.14);
       ctx.fillRect(cx - 8 - wBid, y, wBid, rowH * 0.62);
       ctx.fillStyle = rgba(C.rose, 0.5);
       ctx.fillRect(cx + 8, y, 2, rowH * 0.62);
-      ctx.fillStyle = rgba(C.cyan, 0.5);
+      ctx.fillStyle = rgba(C.up, 0.5);
       ctx.fillRect(cx - 10, y, 2, rowH * 0.62);
     }
     ctx.strokeStyle = C.line;
@@ -125,7 +127,7 @@
       dot(ctx, cx, py, 2.5 + (0.16 - phase) * 20, rgba(C.lime, 0.55));
     }
     label(ctx, "ASK", w * 0.72, h * 0.1, rgba(C.rose, 0.8));
-    label(ctx, "BID", w * 0.24, h * 0.1, rgba(C.cyan, 0.8));
+    label(ctx, "BID", w * 0.24, h * 0.1, rgba(C.up, 0.8));
   }
 
   function custody(ctx, w, h, t, st) {
@@ -400,7 +402,7 @@
       for (var c = 0; c < cols; c++) {
         var v = 0.5 + 0.5 * Math.sin(t * 1.6 + c * 0.7 + r * 1.3 + st.seed);
         var up = (c + r) % 2 === 0;
-        ctx.fillStyle = rgba(up ? C.cyan : C.rose, 0.05 + v * 0.22);
+        ctx.fillStyle = rgba(up ? C.up : C.rose, 0.10 + v * 0.34);
         ctx.fillRect(12 + c * cw, 8 + r * ch, cw - 3, ch - 4);
       }
     }

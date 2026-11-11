@@ -218,8 +218,8 @@
 
     if (busChip) {
       var busAge = stageAge(t, 4);
-      busChip.style.boxShadow = busAge < 0.9 ? "0 0 " + (28 * (1 - busAge / 0.9)).toFixed(1) + "px rgba(200,255,98,.35)" : "";
-      busChip.style.borderColor = busAge < 0.9 ? "rgba(200,255,98," + (0.28 + 0.4 * (1 - busAge / 0.9)).toFixed(2) + ")" : "";
+      busChip.style.boxShadow = busAge < 0.9 ? "0 0 " + (28 * (1 - busAge / 0.9)).toFixed(1) + "px rgba(14,203,129,.35)" : "";
+      busChip.style.borderColor = busAge < 0.9 ? "rgba(14,203,129," + (0.28 + 0.4 * (1 - busAge / 0.9)).toFixed(2) + ")" : "";
     }
 
     /* ---- rail pulses ---- */
@@ -290,7 +290,7 @@
         }
         var flash = maxA > 0.965 ? 0.22 : maxA > 0.9 ? 0.1 : 0;
         rowEl.style.background = flash > 0
-          ? (isAsk ? "rgba(255,180,92," + (flash * 0.55).toFixed(3) + ")" : "rgba(46,230,197," + (flash * 0.45).toFixed(3) + ")")
+          ? (isAsk ? "rgba(240,185,11," + (flash * 0.55).toFixed(3) + ")" : "rgba(252,213,53," + (flash * 0.45).toFixed(3) + ")")
           : "transparent";
         rowEl.children[2].textContent = "Q" + (4 + ((evIdx + i) % 3));
       }
@@ -305,8 +305,8 @@
     var post = Math.max(0, 1 - ledgerAge / 1.1);
     $("mBuy").className = "m-tile buy" + (lit > 0.05 ? " lit" : "");
     $("mSell").className = "m-tile sell" + (lit > 0.05 ? " lit" : "");
-    $("ledgerBox").style.boxShadow = "0 0 " + (26 * post).toFixed(1) + "px rgba(200,255,98," + (0.16 * post).toFixed(3) + ")";
-    $("ledgerBox").style.borderColor = "rgba(200,255,98," + (0.07 + 0.3 * post).toFixed(3) + ")";
+    $("ledgerBox").style.boxShadow = "0 0 " + (26 * post).toFixed(1) + "px rgba(14,203,129," + (0.16 * post).toFixed(3) + ")";
+    $("ledgerBox").style.borderColor = "rgba(14,203,129," + (0.07 + 0.3 * post).toFixed(3) + ")";
     $("balChk").className = "chk" + (post > 0.1 ? "" : " off");
 
     var o = order;

@@ -20,8 +20,8 @@
   .trace-row .tr-meta { display: flex; align-items: center; gap: 5px; }
   .trace-row .tr-bars { display: flex; gap: 2px; align-items: center; margin-top: 1px; }
   .trace-row .tr-bars i { height: 3px; border-radius: 2px; }
-  .trace-row.sel { background: linear-gradient(90deg, rgba(139, 108, 255, 0.14), rgba(139, 108, 255, 0.02)); }
-  .trace-row.sel::before { content: ""; position: absolute; left: 0; top: 8px; bottom: 8px; width: 2px; border-radius: 2px; background: var(--violet); box-shadow: 0 0 10px rgba(139, 108, 255, 0.8); }
+  .trace-row.sel { background: linear-gradient(90deg, rgba(240,185,11, 0.14), rgba(240,185,11, 0.02)); }
+  .trace-row.sel::before { content: ""; position: absolute; left: 0; top: 8px; bottom: 8px; width: 2px; border-radius: 2px; background: var(--violet); box-shadow: 0 0 10px rgba(240,185,11, 0.8); }
   .list-foot { margin-top: auto; padding: 10px 13px; border-top: 1px solid var(--line); display: flex; gap: 6px; flex-wrap: wrap; }
   .list-sum { padding: 10px 13px 4px; display: flex; gap: 16px; }
   .list-sum .k { font: 7px var(--mono); letter-spacing: 0.14em; color: var(--faint); }
@@ -42,10 +42,10 @@
   .span-row .bar-lane { position: relative; height: 16px; }
   .span-row .bar { position: absolute; top: 4px; height: 8px; border-radius: 3px; }
   .span-row .bar.root { height: 10px; top: 3px; }
-  .span-row.sel { background: rgba(139, 108, 255, 0.075); }
+  .span-row.sel { background: rgba(240,185,11, 0.075); }
   .span-row.sel .nm { color: #f2f3fa; }
   .span-row.sel::before { content: ""; position: absolute; left: 0; top: 5px; bottom: 5px; width: 1px; background: var(--violet); box-shadow: 0 0 8px var(--violet); }
-  .wf-playhead { position: absolute; top: 0; bottom: 0; width: 1px; background: linear-gradient(180deg, rgba(46, 230, 197, 0), rgba(46, 230, 197, 0.85) 12%, rgba(46, 230, 197, 0.85) 88%, rgba(46, 230, 197, 0)); box-shadow: 0 0 12px rgba(46, 230, 197, 0.6); }
+  .wf-playhead { position: absolute; top: 0; bottom: 0; width: 1px; background: linear-gradient(180deg, rgba(252,213,53, 0), rgba(252,213,53, 0.85) 12%, rgba(252,213,53, 0.85) 88%, rgba(252,213,53, 0)); box-shadow: 0 0 12px rgba(252,213,53, 0.6); }
   .wf-legend { margin-top: auto; display: flex; gap: 6px; align-items: center; padding-top: 6px; }
   .wf-legend .lg { font: 7px var(--mono); letter-spacing: 0.1em; color: var(--faint); }
 
@@ -56,10 +56,10 @@
   .log-line { position: absolute; left: 0; right: 0; top: 0; height: 29px; display: grid; grid-template-columns: 82px 40px 74px 1fr 176px; align-items: center; padding: 0 14px; font: 8px var(--mono); border-bottom: 1px solid rgba(255, 255, 255, 0.025); }
   .log-line .lt2 { color: var(--faint); font-size: 7.5px; }
   .log-line .lv { font-size: 7px; font-weight: 600; letter-spacing: 0.06em; }
-  .log-line .lv.i { color: #a5f5e8; }
+  .log-line .lv.i { color: #ffe9a3; }
   .log-line .lv.w { color: var(--amber); }
   .log-line .lv.d { color: var(--violet); }
-  .log-line .lsvc { font-size: 7.5px; color: #9ca2b8; letter-spacing: 0.04em; }
+  .log-line .lsvc { font-size: 7.5px; color: #848e9c; letter-spacing: 0.04em; }
   .log-line .lmsg { color: #b9bfd2; font-size: 8px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .log-line .lid { color: var(--faint); font-size: 7.5px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
@@ -70,7 +70,7 @@
   .d-top .d-ico { width: 24px; height: 24px; border-radius: 7px; display: grid; place-items: center; font: 600 9px var(--mono); }
   .d-top .d-name { font: 9px var(--mono); color: #e9ebf4; letter-spacing: 0.01em; }
   .d-top .d-svc { margin-left: auto; font: 7px var(--mono); letter-spacing: 0.1em; color: var(--faint); }
-  .d-ids { display: flex; flex-direction: column; gap: 3px; border-radius: 8px; background: rgba(4, 6, 13, 0.4); border: 1px solid rgba(255, 255, 255, 0.05); padding: 7px 9px; }
+  .d-ids { display: flex; flex-direction: column; gap: 3px; border-radius: 8px; background: rgba(11,14,17, 0.4); border: 1px solid rgba(255, 255, 255, 0.05); padding: 7px 9px; }
   .d-idrow { display: grid; grid-template-columns: 74px 1fr; gap: 6px; font: 8px var(--mono); }
   .d-idrow .k { color: var(--faint); letter-spacing: 0.06em; }
   .d-idrow .v { color: #c3c8da; letter-spacing: 0.02em; }

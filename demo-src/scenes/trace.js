@@ -12,19 +12,19 @@
   var BASE_SEC = 21 * 3600 + 42 * 60 + 10;
 
   var SVC = {
-    WEB: { c: "#8b6cff", label: "WEB" },
-    WS: { c: "#2ee6c5", label: "WS" },
-    GATEWAY: { c: "#8b6cff", label: "GATEWAY" },
-    MATCHING: { c: "#c8ff62", label: "MATCHING" },
-    LEDGER: { c: "#ffb45c", label: "LEDGER" },
-    EVENTS: { c: "#ff6f91", label: "EVENTS" },
-    WORKER: { c: "#2ee6c5", label: "WORKER" },
-    MARKET: { c: "#c8ff62", label: "MARKET DATA" },
-    RISK: { c: "#c8ff62", label: "RISK" },
-    ADMIN: { c: "#8b6cff", label: "ADMIN" },
-    CACHE: { c: "#ffb45c", label: "CACHE" }
+    WEB: { c: "#f0b90b", label: "WEB" },
+    WS: { c: "#fcd535", label: "WS" },
+    GATEWAY: { c: "#f0b90b", label: "GATEWAY" },
+    MATCHING: { c: "#0ecb81", label: "MATCHING" },
+    LEDGER: { c: "#f0b90b", label: "LEDGER" },
+    EVENTS: { c: "#f6465d", label: "EVENTS" },
+    WORKER: { c: "#fcd535", label: "WORKER" },
+    MARKET: { c: "#0ecb81", label: "MARKET DATA" },
+    RISK: { c: "#0ecb81", label: "RISK" },
+    ADMIN: { c: "#f0b90b", label: "ADMIN" },
+    CACHE: { c: "#f0b90b", label: "CACHE" }
   };
-  var PROTO_COLOR = { HTTP: "#8b6cff", WS: "#2ee6c5", gRPC: "#2ee6c5", MySQL: "#ffb45c", REDIS: "#ffb45c", Kafka: "#ff6f91", CORE: "#c8ff62", WORKER: "#2ee6c5" };
+  var PROTO_COLOR = { HTTP: "#f0b90b", WS: "#fcd535", gRPC: "#fcd535", MySQL: "#f0b90b", REDIS: "#f0b90b", Kafka: "#f6465d", CORE: "#0ecb81", WORKER: "#fcd535" };
 
   function span(svc, name, proto, indent, start, dur, attrs) {
     return { svc: svc, name: name, proto: proto, indent: indent, start: start, dur: dur, attrs: attrs };
@@ -112,7 +112,7 @@
     var seed = Demo.rng(9100 + i * 17);
     for (var b = 0; b < 9; b++) {
       var w = 6 + Math.floor(seed() * 16);
-      var c = ["#8b6cff", "#2ee6c5", "#c8ff62", "#ffb45c", "#ff6f91"][b % 5];
+      var c = ["#f0b90b", "#fcd535", "#0ecb81", "#f0b90b", "#f6465d"][b % 5];
       bars += '<i style="width:' + w + 'px;background:' + c + ';opacity:.65"></i>';
     }
     listHtml += '<div class="trace-row' + (i === 0 ? " sel" : "") + '" id="trow' + i + '">' +
@@ -164,7 +164,7 @@
     '        <div class="wf-top"><span class="tid" id="wfId">0x3f8a…c2e1</span><span class="tag violet">POST /spot/order</span><span class="tag lime">OK</span><span style="margin-left:auto" class="tag" id="wfCount">8 SPANS · 6 SERVICES</span></div>',
     '        <div class="wf-cols"><span>Service</span><span>Span</span><span>Protocol</span><span>Relative timeline</span></div>',
     '        <div style="position:relative">' + wfRowsHtml + '<div class="wf-playhead" id="playhead" style="left:0"></div></div>',
-    '        <div class="wf-legend"><span class="lg">SPAN FLOW</span><span class="lg" style="color:#8b6cff">HTTP</span><span class="lg" style="color:#2ee6c5">WS / gRPC</span><span class="lg" style="color:#c8ff62">CORE</span><span class="lg" style="color:#ffb45c">MYSQL / CACHE</span><span class="lg" style="color:#ff6f91">KAFKA</span></div>',
+    '        <div class="wf-legend"><span class="lg">SPAN FLOW</span><span class="lg" style="color:#f0b90b">HTTP</span><span class="lg" style="color:#fcd535">WS / gRPC</span><span class="lg" style="color:#0ecb81">CORE</span><span class="lg" style="color:#f0b90b">MYSQL / CACHE</span><span class="lg" style="color:#f6465d">KAFKA</span></div>',
     '      </div></div>',
     '    </div>',
     '    <div class="panel logs-panel">',
@@ -179,7 +179,7 @@
     '    <div class="panel detail-panel">',
     '      <div class="panel-hd"><span class="panel-name">Span detail</span><span class="panel-aux"><span class="tag violet">SELECTED</span></span></div>',
     '      <div class="panel-bd"><div class="detail-body">',
-    '        <div class="d-top"><span class="d-ico" id="dIco" style="color:#c8ff62;background:rgba(200,255,98,.12);border:1px solid rgba(200,255,98,.24)">M</span><div><div class="d-name" id="dName">price-time match</div><div class="d-svc" id="dSvc" style="margin-left:0">MATCHING · CORE</div></div><span class="tag lime" id="dStatus">OK</span></div>',
+    '        <div class="d-top"><span class="d-ico" id="dIco" style="color:#0ecb81;background:rgba(14,203,129,.12);border:1px solid rgba(14,203,129,.24)">M</span><div><div class="d-name" id="dName">price-time match</div><div class="d-svc" id="dSvc" style="margin-left:0">MATCHING · CORE</div></div><span class="tag lime" id="dStatus">OK</span></div>',
     '        <div class="d-ids">',
     '          <div class="d-idrow"><span class="k">trace_id</span><span class="v" id="dTrace">0x3f8a…c2e1</span></div>',
     '          <div class="d-idrow"><span class="k">span_id</span><span class="v" id="dSpan">0x9c1d…21a4</span></div>',
@@ -265,7 +265,7 @@
       rect.setAttribute("x", n.x - 33); rect.setAttribute("y", n.y - 11);
       rect.setAttribute("width", 66); rect.setAttribute("height", 22);
       rect.setAttribute("rx", 6);
-      rect.setAttribute("fill", "rgba(12,15,26,0.9)");
+      rect.setAttribute("fill", "rgba(24,26,32,0.9)");
       rect.setAttribute("stroke", SVC[n.id].c);
       rect.setAttribute("stroke-opacity", "0.35");
       g.appendChild(rect);
@@ -414,7 +414,7 @@
       var node = NODES[n];
       var present = trace.spans.some(function (sp) { return (alias[sp.svc] || sp.svc) === node.id; });
       node.glow.setAttribute("stroke-opacity", present ? "0.75" : "0.2");
-      node.glow.setAttribute("fill", present ? "rgba(21,25,42,0.96)" : "rgba(12,15,26,0.9)");
+      node.glow.setAttribute("fill", present ? "rgba(30,35,41,0.96)" : "rgba(24,26,32,0.9)");
     }
   }
 

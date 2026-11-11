@@ -128,7 +128,7 @@
     '            <div class="pct-track"><div class="fill" style="width:62%"></div><div class="knob" style="left:62%"></div></div>',
     '            <span class="pct-lbl">50%</span><span class="pct-lbl">75%</span><span class="pct-lbl">MAX</span>',
     '          </div>',
-    '          <div class="btn grad" id="buyBtn" style="height:31px;background:linear-gradient(100deg,#dcff9a,#c8ff62);color:#0d1405;box-shadow:0 8px 24px rgba(200,255,98,.22)">Buy BTC · 0.0420</div>',
+    '          <div class="btn grad" id="buyBtn" style="height:31px;background:linear-gradient(100deg,#9fe8c8,#0ecb81);color:#04140d;box-shadow:0 8px 24px rgba(14,203,129,.22)">Buy BTC · 0.0420</div>',
     '          <div class="mini-note">Demo order · not submitted</div>',
     '        </div></div>',
     '      </div>',
@@ -267,7 +267,7 @@
     for (var v = 68320; v <= 68520; v += 40) {
       var gy = py(v);
       ctx.beginPath(); ctx.moveTo(PL, gy); ctx.lineTo(PR, gy); ctx.stroke();
-      ctx.fillStyle = "rgba(120,126,150,0.65)";
+      ctx.fillStyle = "rgba(132,142,156,0.65)";
       ctx.textAlign = "left";
       ctx.fillText(Demo.num(v, 0), PR + 9, gy);
     }
@@ -277,7 +277,7 @@
       ctx.beginPath(); ctx.moveTo(gx, PT); ctx.lineTo(gx, PB); ctx.stroke();
     }
     var tl = ["−20m", "−15m", "−10m", "−5m", "NOW"];
-    ctx.fillStyle = "rgba(110,116,140,0.6)";
+    ctx.fillStyle = "rgba(132,142,156,0.6)";
     for (var tk = 0; tk < 5; tk++) {
       ctx.textAlign = tk === 0 ? "left" : tk === 4 ? "right" : "center";
       ctx.fillText(tl[tk], PL + tk * (PR - PL) / 4, 404);
@@ -291,10 +291,10 @@
       var cv = jv === i ? live : candleAt(jv);
       var bh = Math.max(2, Math.min(1, cv.vol / volMax) * (VOL_B - VOL_T));
       var upv = cv.c >= cv.o;
-      ctx.fillStyle = upv ? "rgba(200,255,98,0.26)" : "rgba(255,111,145,0.24)";
+      ctx.fillStyle = upv ? "rgba(14,203,129,0.26)" : "rgba(246,70,93,0.24)";
       ctx.fillRect(xv - STEP * 0.27, VOL_B - bh, STEP * 0.54, bh);
     }
-    ctx.fillStyle = "rgba(110,116,140,0.55)";
+    ctx.fillStyle = "rgba(132,142,156,0.55)";
     ctx.textAlign = "left";
     ctx.fillText("VOL  " + Demo.num(live.vol, 1) + " BTC", PL + 2, VOL_T - 8);
 
@@ -305,8 +305,8 @@
       if (x < PL - STEP || x > PR + STEP) continue;
       var c = j === i ? live : candleAt(j);
       var up = c.c >= c.o;
-      var wick = up ? "rgba(200,255,98,0.55)" : "rgba(255,111,145,0.55)";
-      var body = up ? "rgba(200,255,98,0.92)" : "rgba(255,111,145,0.9)";
+      var wick = up ? "rgba(14,203,129,0.55)" : "rgba(246,70,93,0.55)";
+      var body = up ? "rgba(14,203,129,0.92)" : "rgba(246,70,93,0.9)";
       var bw = Math.max(6, STEP * 0.56);
       ctx.strokeStyle = wick;
       ctx.lineWidth = 1.4;
@@ -314,7 +314,7 @@
       var yo = py(c.o), yc = py(c.c);
       var top = Math.min(yo, yc), hgt = Math.max(1.5, Math.abs(yc - yo));
       if (j === i) {
-        ctx.shadowColor = up ? "rgba(200,255,98,0.45)" : "rgba(255,111,145,0.4)";
+        ctx.shadowColor = up ? "rgba(14,203,129,0.45)" : "rgba(246,70,93,0.4)";
         ctx.shadowBlur = 10;
       }
       ctx.fillStyle = body;
@@ -336,19 +336,19 @@
       if (kp === 0) ctx.moveTo(pts[kp][0], pts[kp][1]);
       else ctx.lineTo(pts[kp][0], pts[kp][1]);
     }
-    ctx.strokeStyle = "rgba(139,108,255,0.85)";
+    ctx.strokeStyle = "rgba(240,185,11,0.85)";
     ctx.lineWidth = 1.7;
-    ctx.shadowColor = "rgba(139,108,255,0.5)";
+    ctx.shadowColor = "rgba(240,185,11,0.5)";
     ctx.shadowBlur = 8;
     ctx.stroke();
     ctx.shadowBlur = 0;
 
     /* average entry line */
     ctx.setLineDash([3, 4]);
-    ctx.strokeStyle = "rgba(139,108,255,0.35)";
+    ctx.strokeStyle = "rgba(240,185,11,0.35)";
     ctx.lineWidth = 1;
     ctx.beginPath(); ctx.moveTo(PL, py(POS_ENTRY)); ctx.lineTo(PR, py(POS_ENTRY)); ctx.stroke();
-    ctx.fillStyle = "rgba(170,150,255,0.8)";
+    ctx.fillStyle = "rgba(248,231,176,0.8)";
     ctx.textAlign = "left";
     ctx.font = '8.5px "JetBrains Mono"';
     ctx.fillText("AVG ENTRY " + Demo.num(POS_ENTRY, 1), PL + 3, py(POS_ENTRY) - 8);
@@ -356,18 +356,18 @@
     /* current price line */
     var pyNow = py(p);
     ctx.setLineDash([4, 5]);
-    ctx.strokeStyle = curUp ? "rgba(200,255,98,0.5)" : "rgba(255,111,145,0.45)";
+    ctx.strokeStyle = curUp ? "rgba(14,203,129,0.5)" : "rgba(246,70,93,0.45)";
     ctx.beginPath(); ctx.moveTo(PL, pyNow); ctx.lineTo(PR + 4, pyNow); ctx.stroke();
     ctx.setLineDash([]);
     var tagTxt = fmtPx(p);
     ctx.font = '600 9.5px "JetBrains Mono"';
     var tw = ctx.measureText(tagTxt).width + 14;
-    ctx.fillStyle = curUp ? "rgba(200,255,98,0.92)" : "rgba(255,111,145,0.92)";
+    ctx.fillStyle = curUp ? "rgba(14,203,129,0.92)" : "rgba(246,70,93,0.92)";
     ctx.beginPath();
     if (ctx.roundRect) ctx.roundRect(PR + 5, pyNow - 9, tw, 18, 4);
     else ctx.rect(PR + 5, pyNow - 9, tw, 18);
     ctx.fill();
-    ctx.fillStyle = "#0a0c08";
+    ctx.fillStyle = "#06110d";
     ctx.textAlign = "left";
     ctx.textBaseline = "middle";
     ctx.fillText(tagTxt, PR + 12, pyNow + 0.5);
@@ -378,10 +378,10 @@
       var alpha = fa < 0.35 ? Demo.smooth(fa / 0.35) : fa > 4.6 ? 1 - Demo.smooth((fa - 4.6) / 0.8) : 1;
       ctx.globalAlpha = alpha;
       ctx.setLineDash([5, 4]);
-      ctx.strokeStyle = "rgba(200,255,98,0.6)";
+      ctx.strokeStyle = "rgba(14,203,129,0.6)";
       ctx.beginPath(); ctx.moveTo(PL, py(FILL_PRICE)); ctx.lineTo(PR, py(FILL_PRICE)); ctx.stroke();
       ctx.setLineDash([]);
-      ctx.fillStyle = "rgba(220,255,160,0.9)";
+      ctx.fillStyle = "rgba(201,247,229,0.9)";
       ctx.font = '8.5px "JetBrains Mono"';
       ctx.textAlign = "right";
       ctx.fillText("FILL " + Demo.num(FILL_PRICE, 1) + " · 0.0420 BTC", PR - 4, py(FILL_PRICE) - 8);
@@ -503,12 +503,12 @@
     var btn = $("buyBtn");
     if (fillAge < 1.6) {
       Demo.setText(btn, "Market buy filled ✓");
-      btn.style.background = "linear-gradient(100deg,#f0ffcf,#d6ff8a)";
-      btn.style.boxShadow = "0 0 34px rgba(200,255,98,.45)";
+      btn.style.background = "linear-gradient(100deg,#d7f9ec,#9fe8c8)";
+      btn.style.boxShadow = "0 0 34px rgba(14,203,129,.45)";
     } else {
       Demo.setText(btn, "Buy BTC · 0.0420");
-      btn.style.background = "linear-gradient(100deg,#dcff9a,#c8ff62)";
-      btn.style.boxShadow = "0 8px 24px rgba(200,255,98,.22)";
+      btn.style.background = "linear-gradient(100deg,#9fe8c8,#0ecb81)";
+      btn.style.boxShadow = "0 8px 24px rgba(14,203,129,.22)";
     }
 
   }

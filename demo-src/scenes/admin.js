@@ -88,16 +88,16 @@
     /* -------- left -------- */
     '  <div class="col">',
     '    <div class="kpi-row">',
-    '      <div class="kpi-tile tint-violet"><div class="kt-k">PORTFOLIO EXPOSURE</div><div class="kt-v"><span id="kExposureV">12.48</span><small>M USDT</small></div><div class="kt-f"><span style="color:var(--lime)">+1.24%</span><span>vs. open</span></div><svg class="kt-spark" width="76" height="26" viewBox="0 0 76 26"><polyline id="spark0" fill="none" stroke="#8b6cff" stroke-width="1.4" stroke-linecap="round" points=""/></svg></div>',
-    '      <div class="kpi-tile tint-cyan"><div class="kt-k">MARGIN RATIO</div><div class="kt-v"><span id="kMarginV">218</span><small>%</small></div><div class="kt-f"><span style="color:var(--cyan)">HEALTHY</span><span>cross margin</span></div><svg class="kt-spark" width="76" height="26" viewBox="0 0 76 26"><polyline id="spark1" fill="none" stroke="#2ee6c5" stroke-width="1.4" stroke-linecap="round" points=""/></svg></div>',
-    '      <div class="kpi-tile tint-amber"><div class="kt-k">RISK ALERTS</div><div class="kt-v"><span id="kAlertsV">3</span><small>OPEN</small></div><div class="kt-f"><span style="color:var(--amber)">1 MEDIUM</span><span>· 1 HIGH</span></div><svg class="kt-spark" width="76" height="26" viewBox="0 0 76 26"><polyline id="spark2" fill="none" stroke="#ffb45c" stroke-width="1.4" stroke-linecap="round" points=""/></svg></div>',
+    '      <div class="kpi-tile tint-violet"><div class="kt-k">PORTFOLIO EXPOSURE</div><div class="kt-v"><span id="kExposureV">12.48</span><small>M USDT</small></div><div class="kt-f"><span style="color:var(--lime)">+1.24%</span><span>vs. open</span></div><svg class="kt-spark" width="76" height="26" viewBox="0 0 76 26"><polyline id="spark0" fill="none" stroke="#f0b90b" stroke-width="1.4" stroke-linecap="round" points=""/></svg></div>',
+    '      <div class="kpi-tile tint-cyan"><div class="kt-k">MARGIN RATIO</div><div class="kt-v"><span id="kMarginV">218</span><small>%</small></div><div class="kt-f"><span style="color:var(--cyan)">HEALTHY</span><span>cross margin</span></div><svg class="kt-spark" width="76" height="26" viewBox="0 0 76 26"><polyline id="spark1" fill="none" stroke="#fcd535" stroke-width="1.4" stroke-linecap="round" points=""/></svg></div>',
+    '      <div class="kpi-tile tint-amber"><div class="kt-k">RISK ALERTS</div><div class="kt-v"><span id="kAlertsV">3</span><small>OPEN</small></div><div class="kt-f"><span style="color:var(--amber)">1 MEDIUM</span><span>· 1 HIGH</span></div><svg class="kt-spark" width="76" height="26" viewBox="0 0 76 26"><polyline id="spark2" fill="none" stroke="#f0b90b" stroke-width="1.4" stroke-linecap="round" points=""/></svg></div>',
     '    </div>',
     '    <div class="panel exposure-panel">',
     '      <div class="panel-hd"><span class="panel-name">Exposure &amp; risk</span><span class="panel-aux"><span class="tag lime">WITHIN LIMITS</span><span class="tag">CROSS MARGIN</span></span></div>',
     '      <div class="panel-bd"><div class="exp-body">',
     '        <div class="gauge-wrap">',
     '          <svg width="150" height="150" viewBox="0 0 150 150">',
-    '            <defs><linearGradient id="gg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8b6cff"/><stop offset="0.6" stop-color="#2ee6c5"/><stop offset="1" stop-color="#c8ff62"/></linearGradient></defs>',
+    '            <defs><linearGradient id="gg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f0b90b"/><stop offset="0.6" stop-color="#fcd535"/><stop offset="1" stop-color="#0ecb81"/></linearGradient></defs>',
     '            <circle cx="75" cy="75" r="56" fill="none" stroke="rgba(255,255,255,.07)" stroke-width="8" stroke-dasharray="263.9 351.9" transform="rotate(135 75 75)"/>',
     '            <circle id="gaugeArc" cx="75" cy="75" r="56" fill="none" stroke="url(#gg)" stroke-width="8" stroke-linecap="round" stroke-dasharray="190 351.9" transform="rotate(135 75 75)"/>',
     '          </svg>',
@@ -144,7 +144,7 @@
     '<div class="modal-backdrop" id="mBackdrop">',
     '  <div class="modal" id="mfaModal">',
     '    <div class="modal-hd">',
-    '      <span style="width:32px;height:32px;border-radius:9px;display:grid;place-items:center;color:#ffd1a0;background:rgba(255,180,92,.12);border:1px solid rgba(255,180,92,.3)"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2l5 2v3.4c0 3.1-2.1 5.3-5 6.6-2.9-1.3-5-3.5-5-6.6V4z"/><path d="M8 6v3M8 11.2h.01"/></svg></span>',
+    '      <span style="width:32px;height:32px;border-radius:9px;display:grid;place-items:center;color:#ffd1a0;background:rgba(240,185,11,.12);border:1px solid rgba(240,185,11,.3)"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2l5 2v3.4c0 3.1-2.1 5.3-5 6.6-2.9-1.3-5-3.5-5-6.6V4z"/><path d="M8 6v3M8 11.2h.01"/></svg></span>',
     '      <div><div style="font:500 14px var(--disp);letter-spacing:-.01em;color:#f2f4fb">Withdrawal approval</div><div style="margin-top:3px;font:8px var(--mono);letter-spacing:.12em;color:var(--faint)">TOTP · DUAL CONTROL · DEMO</div></div>',
     '      <span class="tag amber" style="margin-left:auto">2FA REQUIRED</span>',
     '    </div>',
@@ -153,7 +153,7 @@
     '        <div class="ws-meta"><div>acct <b>0x7f3a…2c91</b></div><div>network <b>TRC-20</b></div><div>requested <b>21:42:05</b></div></div></div>',
     '      <div style="margin-top:14px;font:8px var(--mono);letter-spacing:.13em;color:var(--faint)">AUTHENTICATOR CODE</div>',
     '      <div class="totp-boxes" id="totpBoxes">' + totpBoxes + '</div>',
-    '      <div class="totp-meta"><svg class="totp-ring" viewBox="0 0 20 20"><circle cx="10" cy="10" r="7.5" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="1.6"/><circle id="totpRing" cx="10" cy="10" r="7.5" fill="none" stroke="#2ee6c5" stroke-width="1.6" stroke-linecap="round" stroke-dasharray="47.1" stroke-dashoffset="0" transform="rotate(-90 10 10)"/></svg><span id="totpHint">ENTERING CODE · 30S WINDOW</span></div>',
+    '      <div class="totp-meta"><svg class="totp-ring" viewBox="0 0 20 20"><circle cx="10" cy="10" r="7.5" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="1.6"/><circle id="totpRing" cx="10" cy="10" r="7.5" fill="none" stroke="#fcd535" stroke-width="1.6" stroke-linecap="round" stroke-dasharray="47.1" stroke-dashoffset="0" transform="rotate(-90 10 10)"/></svg><span id="totpHint">ENTERING CODE · 30S WINDOW</span></div>',
     '      <div class="mfa-note">Confirming releases the withdrawal and writes an immutable entry to the audit trail.</div>',
     '    </div>',
     '    <div class="modal-ft"><div class="btn ghost" style="flex:1">Reject</div><div class="btn grad" id="confirmBtn" style="flex:1.5">Confirm approval</div></div>',
@@ -230,7 +230,7 @@
       : sel ? '<span class="tag violet">IN REVIEW</span>' : '<span class="tag amber">PENDING</span>');
     var flashApproved = approved ? Demo.smooth((t - T_CONFIRM) / 0.4) * (1 - Demo.smooth((t - T_CONFIRM - 0.9) / 0.8)) : 0;
     wqRows[0].style.background = flashApproved > 0.02
-      ? "rgba(200,255,98," + (0.1 * flashApproved).toFixed(3) + ")"
+      ? "rgba(14,203,129," + (0.1 * flashApproved).toFixed(3) + ")"
       : "";
 
     /* ---- audit trail ---- */
@@ -268,7 +268,7 @@
       var fadeOut = modalAge > 2.85 ? 1 - Demo.smooth((modalAge - 2.85) / 0.3) : 1;
       var alpha = Math.min(fadeIn, fadeOut);
       back.style.opacity = "1";
-      back.style.background = "rgba(3,4,10," + (0.62 * alpha).toFixed(3) + ")";
+      back.style.background = "rgba(11,14,17," + (0.62 * alpha).toFixed(3) + ")";
       back.style.pointerEvents = "none";
       $("mfaModal").style.opacity = alpha.toFixed(3);
       $("mfaModal").style.transform = "translate3d(0," + ((1 - fadeIn) * 16).toFixed(2) + "px,0) scale(" + (0.985 + 0.015 * fadeIn).toFixed(4) + ")";
@@ -286,7 +286,7 @@
       var btn = $("confirmBtn");
       btn.textContent = pressed ? "Approving…" : "Confirm approval";
       btn.style.transform = pressed ? "scale(0.975)" : "";
-      btn.style.boxShadow = pressed ? "0 0 34px rgba(200,255,98,.4)" : "";
+      btn.style.boxShadow = pressed ? "0 0 34px rgba(14,203,129,.4)" : "";
     }
   }
 
