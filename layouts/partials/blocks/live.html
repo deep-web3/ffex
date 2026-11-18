@@ -1,0 +1,37 @@
+{{- $b := .b -}}
+<section class="block block--live"{{ with $b.id }} id="{{ . }}"{{ end }}>
+  <div class="container">
+    <div class="live-panel" data-reveal>
+      <div class="live-panel__copy">
+        {{- with $b.kicker }}<p class="eyebrow">{{ . }}</p>{{ end }}
+        <h2 class="live-panel__title">{{ $b.title | safeHTML }}</h2>
+        {{- with $b.lede }}<p class="live-panel__lede">{{ . | safeHTML }}</p>{{ end }}
+        {{- with $b.url }}
+        <div class="live-panel__actions">
+          <a class="btn btn--primary" href="{{ . | safeURL }}" target="_blank" rel="noopener">{{ $b.label }}{{ partial "icon.html" "arrow" }}</a>
+        </div>
+        {{- end }}
+        {{- with $b.note }}<p class="live-panel__note">{{ . }}</p>{{ end }}
+      </div>
+      <div class="live-view" aria-hidden="true">
+        <div class="live-view__bar">
+          <span class="live-view__dots"><i></i><i></i><i></i></span>
+          {{- with $b.chrome }}<span class="live-view__addr">{{ . }}</span>{{ end }}
+          {{- with $b.badge }}<span class="live-view__badge">{{ . }}</span>{{ end }}
+        </div>
+        <div class="live-view__body">
+          <div class="live-view__nav">
+            <span class="live-view__mark">F</span>
+            {{- range $b.nav }}<span class="live-view__nav-item">{{ . }}</span>{{ end }}
+          </div>
+          {{- with $b.headline }}<p class="live-view__headline">{{ . }}</p>{{ end }}
+          {{- with $b.cards }}
+          <div class="live-view__cards">
+            {{- range . }}<span class="live-view__card">{{ . }}</span>{{ end }}
+          </div>
+          {{- end }}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

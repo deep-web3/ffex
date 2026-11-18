@@ -625,6 +625,7 @@ html[data-lang="zh"] .section-title {
 }
 html[data-lang="zh"] .page-hero__title,
 html[data-lang="zh"] .cta-panel__title,
+html[data-lang="zh"] .live-panel__title,
 html[data-lang="zh"] .article__title {
   line-height: 1.14;
   letter-spacing: -0.02em;

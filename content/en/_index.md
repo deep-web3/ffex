@@ -206,6 +206,20 @@ blocks:
           - "Receipt accounting and retry"
           - "Java and Go SDKs"
 
+  - type: live
+    id: live
+    kicker: "LIVE SYSTEM"
+    title: "The platform, <em>running</em>."
+    lede: "The system home page is live: market overview, spot, futures, options, wallet and account entry points in one workspace. This is the build our team runs today — the same system described across this site."
+    url: "https://portal-go.mtvstart.com/"
+    label: "Open the live platform"
+    note: "Development preview · sample data. The panel above is a schematic of the running system; the button opens the real environment."
+    chrome: "portal-go.mtvstart.com"
+    badge: "DEV PREVIEW"
+    nav: ["Markets", "Spot", "Futures", "Options", "Wallet"]
+    headline: "Every market. One clear view."
+    cards: ["Spot", "Futures", "Options"]
+
   - type: stack
     id: stack
     kicker: "DUAL STACK"

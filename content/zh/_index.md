@@ -206,6 +206,20 @@ blocks:
           - "回执核算与重试"
           - "Java 与 Go SDK"
 
+  - type: live
+    id: live
+    kicker: "运行中的系统"
+    title: "真实运行中的<em>交易系统</em>。"
+    lede: "系统首页已经上线：行情总览、现货、合约、期权、钱包与账户入口集中在同一个工作区。这就是我们团队当前运行的版本，也是本站所描述的那套系统。"
+    url: "https://portal-go.mtvstart.com/"
+    label: "进入交易系统"
+    note: "开发预览 · 示例数据。上方为系统界面的示意面板，点击按钮进入真实运行环境。"
+    chrome: "portal-go.mtvstart.com"
+    badge: "开发预览"
+    nav: ["行情", "现货", "合约", "期权", "钱包"]
+    headline: "每个市场，一个清晰视图。"
+    cards: ["现货", "合约", "期权"]
+
   - type: stack
     id: stack
     kicker: "双技术栈"
